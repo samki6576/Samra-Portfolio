@@ -39,7 +39,7 @@ export default function Gallery() {
       link: "https://blog-space-git-main-samras-projects-c05660e5.vercel.app",
     },
     {
-      src: "/9.png",
+      src: "/9.jpgS",
       alt: "Art piece 4",
       title: "Golden Crust",
       link: "https://bakery-git-main-samras-projects-c05660e5.vercel.app",
@@ -51,7 +51,7 @@ export default function Gallery() {
       link: "https://3-d-space-explorer-git-main-samras-projects-c05660e5.vercel.app",
     },
     {
-      src: "/a.png",
+      src: "/a.jpg",
       alt: "Bella Vista Pizzeria",
       title: "Bella Vista",
       link: "https://bella-vista-pizzeria-git-main-samras-projects-c05660e5.vercel.app",

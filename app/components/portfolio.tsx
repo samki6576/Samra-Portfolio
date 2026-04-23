@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 export default function Portfolio() {
   const [selectedCategory] = useState("all")
   const targetRef = useRef<HTMLDivElement>(null)
-  
+
   const { scrollYProgress } = useScroll({
     target: targetRef,
   })
@@ -47,6 +47,14 @@ export default function Portfolio() {
       year: "2025",
       image: "https://images.seeklogo.com/logo-png/66/1/openclaw-logo-png_seeklogo-665449.png?v=1971850109529183720",
     },
+    {
+      id: 4,
+      title: "OpenClaw AI Guardian",
+      category: "Apps",
+      url: "https://open-claw-sigma.vercel.app/",
+      year: "2025",
+      image: "https://images.seeklogo.com/logo-png/66/1/openclaw-logo-png_seeklogo-665449.png?v=1971850109529183720",
+    },
   ]
 
   const filteredWorks = works.filter((work) => (selectedCategory === "all" ? true : work.category === selectedCategory))
@@ -55,15 +63,15 @@ export default function Portfolio() {
     <section ref={targetRef} className="relative h-[300vh] bg-[#020202]">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex w-max gap-16 px-12 md:px-32">
-          
+
           {/* Title Section */}
           <div className="min-w-[70vw] md:min-w-[40vw] flex flex-col justify-center pr-20">
-             <h2 className="text-[10vw] leading-[0.85] font-bold uppercase tracking-tighter text-white mix-blend-difference">
-               Web<br/><span className="text-blue-500/90">Apps</span>
-             </h2>
-             <p className="mt-8 text-xl text-white/50 max-w-sm uppercase tracking-widest leading-relaxed">
-               Functional digital tools built for speed and utility.
-             </p>
+            <h2 className="text-[10vw] leading-[0.85] font-bold uppercase tracking-tighter text-white mix-blend-difference">
+              Web<br /><span className="text-blue-500/90">Apps</span>
+            </h2>
+            <p className="mt-8 text-xl text-white/50 max-w-sm uppercase tracking-widest leading-relaxed">
+              Functional digital tools built for speed and utility.
+            </p>
           </div>
 
           {/* Horizontal Items */}
@@ -86,7 +94,7 @@ export default function Portfolio() {
                   />
                   <div className="absolute inset-0 bg-blue-900/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700" />
                 </div>
-                
+
                 {/* Floating Hidden Info that reveals on hover */}
                 <div className="absolute top-8 right-8 overflow-hidden mix-blend-difference">
                   <span className="text-xl font-bold tracking-widest text-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1] inline-block">
@@ -103,7 +111,7 @@ export default function Portfolio() {
               </a>
             </div>
           ))}
-          
+
           {/* End padding block */}
           <div className="min-w-[15vw]"></div>
         </motion.div>
