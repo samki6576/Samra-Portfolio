@@ -20,6 +20,13 @@ export default function Gallery() {
       link: "https://elegance-ecommerce-website-git-f3c38a-samras-projects-c05660e5.vercel.app",
     },
     {
+      src: "/lol.png",
+      alt: "Breakfast Blitz",
+      title: "Breakfast Blitz Game",
+      link: "https://breakfast-v8a1.vercel.app/",
+    },
+
+    {
       src: "/8.png",
       alt: "Art piece 2",
       title: "Ocean-Explorer",
@@ -48,28 +55,22 @@ export default function Gallery() {
       alt: "Bella Vista Pizzeria",
       title: "Bella Vista",
       link: "https://bella-vista-pizzeria-git-main-samras-projects-c05660e5.vercel.app",
-    },
-    {
-      src: "/l.png",
-      alt: "The CourtShoes",
-      title: "CourtShoes",
-      link: "https://the-court-theta.vercel.app",
-    },
-  ]
+    },]
+
 
   return (
     <section ref={targetRef} className="relative h-[400vh] bg-[#050505]">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex w-max gap-16 px-12 md:px-32">
-          
+
           {/* Title Section */}
           <div className="min-w-[70vw] md:min-w-[40vw] flex flex-col justify-center pr-20">
-             <h2 className="text-[10vw] leading-[0.85] font-bold uppercase tracking-tighter text-white mix-blend-difference">
-               Selected<br/><span className="text-primary/90">Works</span>
-             </h2>
-             <p className="mt-8 text-xl text-white/50 max-w-sm uppercase tracking-widest leading-relaxed">
-               A collection of e-commerce platforms, immersive 3D experiences, and creative web solutions.
-             </p>
+            <h2 className="text-[10vw] leading-[0.85] font-bold uppercase tracking-tighter text-white mix-blend-difference">
+              Selected<br /><span className="text-primary/90">Works</span>
+            </h2>
+            <p className="mt-8 text-xl text-white/50 max-w-sm uppercase tracking-widest leading-relaxed">
+              A collection of e-commerce platforms, immersive 3D experiences, and creative web solutions.
+            </p>
           </div>
 
           {/* Horizontal Items */}
@@ -93,7 +94,7 @@ export default function Gallery() {
                   {/* Subtle Dark Overlay */}
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
                 </div>
-                
+
                 {/* Floating Hidden Title that reveals on hover */}
                 <div className="absolute bottom-10 left-10 overflow-hidden mix-blend-difference">
                   <h3 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter text-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-700 ease-[0.16,1,0.3,1]">
@@ -109,7 +110,7 @@ export default function Gallery() {
               </a>
             </div>
           ))}
-          
+
           {/* End padding block */}
           <div className="min-w-[10vw]"></div>
         </motion.div>
