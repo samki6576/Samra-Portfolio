@@ -1,6 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
+import { title } from "process"
 import { useRef } from "react"
 
 export default function Gallery() {
@@ -39,7 +40,7 @@ export default function Gallery() {
       link: "https://blog-space-git-main-samras-projects-c05660e5.vercel.app",
     },
     {
-      src: "/9.jpgS",
+      src: "/9.jpg",
       alt: "Art piece 4",
       title: "Golden Crust",
       link: "https://bakery-git-main-samras-projects-c05660e5.vercel.app",
