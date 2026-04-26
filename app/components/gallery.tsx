@@ -26,12 +26,6 @@ export default function Gallery() {
       title: "Ecommerce-Website",
       link: "https://elegance-ecommerce-website-git-f3c38a-samras-projects-c05660e5.vercel.app",
     },
-    {
-      src: "/lol.png",
-      alt: "Breakfast Blitz",
-      title: "Breakfast Blitz Game",
-      link: "https://breakfast-v8a1.vercel.app/",
-    },
 
     {
       src: "/8.png",
