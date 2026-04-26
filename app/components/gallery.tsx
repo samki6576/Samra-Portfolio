@@ -40,6 +40,12 @@ export default function Gallery() {
       link: "https://blog-space-git-main-samras-projects-c05660e5.vercel.app",
     },
     {
+      src: "/io.png",
+      alt: "Art piece 3",
+      title: "THE COURT shoes store",
+      link: "https://the-court-theta.vercel.app",
+    },
+    {
       src: "/9.jpg",
       alt: "Art piece 4",
       title: "Golden Crust",
