@@ -34,6 +34,14 @@ export default function Portfolio() {
       image: "t.png",
     },
     {
+      id: 1,
+      title: "VitalSign AI",
+      category: "Apps",
+      url: "https://vital-sign-ai.vercel.app/",
+      year: "2025",
+      image: "ti.png",
+    },
+    {
       id: 2,
       title: "Zizy PDF Maker",
       category: "Apps",
