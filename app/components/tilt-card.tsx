@@ -42,8 +42,8 @@ export default function TiltCard({ children, className }: { children: React.Reac
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
-        rotateX: useMotionTemplate`${mouseYSpring} * -15deg`,
-        rotateY: useMotionTemplate`${mouseXSpring} * 15deg`,
+        rotateX: useMotionTemplate`calc(${mouseYSpring} * -15deg)`,
+        rotateY: useMotionTemplate`calc(${mouseXSpring} * 15deg)`,
         transformStyle: "preserve-3d",
       }}
       className={className}

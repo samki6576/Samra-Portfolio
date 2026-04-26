@@ -47,14 +47,6 @@ export default function Portfolio() {
       year: "2025",
       image: "https://images.seeklogo.com/logo-png/66/1/openclaw-logo-png_seeklogo-665449.png?v=1971850109529183720",
     },
-    {
-      id: 4,
-      title: "OpenClaw AI Guardian",
-      category: "Apps",
-      url: "https://open-claw-sigma.vercel.app/",
-      year: "2025",
-      image: "https://images.seeklogo.com/logo-png/66/1/openclaw-logo-png_seeklogo-665449.png?v=1971850109529183720",
-    },
   ]
 
   const filteredWorks = works.filter((work) => (selectedCategory === "all" ? true : work.category === selectedCategory))

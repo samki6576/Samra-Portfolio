@@ -15,6 +15,12 @@ export default function Gallery() {
 
   const images = [
     {
+      src: "/de.png",
+      alt: "Art piece 1",
+      title: "Rate My Last Text",
+      link: "https://ratrmylasttext.netlify.app",
+    },
+    {
       src: "/7.png",
       alt: "Art piece 1",
       title: "Ecommerce-Website",
