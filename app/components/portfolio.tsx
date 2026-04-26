@@ -17,11 +17,11 @@ export default function Portfolio() {
   const works = [
     {
       id: 5,
-      src: "/lol.png",
+      image: "/lol.png",
       category: "Games",
       alt: "Breakfast Blitz",
       title: "Breakfast Blitz Game",
-      link: "https://breakfast-v8a1.vercel.app/",
+      url: "https://breakfast-v8a1.vercel.app/",
 
 
     },
