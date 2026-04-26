@@ -16,7 +16,7 @@ export default function Portfolio() {
 
   const works = [
     {
-      id: 5,
+      id: 1,
       image: "/lol.png",
       category: "Games",
       alt: "Breakfast Blitz",
@@ -26,7 +26,7 @@ export default function Portfolio() {
 
     },
     {
-      id: 1,
+      id: 2,
       title: "Habit Tracker",
       category: "Apps",
       url: "https://habit-tracker-git-main-samras-projects-c05660e5.vercel.app",
@@ -34,7 +34,7 @@ export default function Portfolio() {
       image: "t.png",
     },
     {
-      id: 1,
+      id: 3,
       title: "VitalSign AI",
       category: "Apps",
       url: "https://vital-sign-ai.vercel.app/",
@@ -42,7 +42,7 @@ export default function Portfolio() {
       image: "ti.png",
     },
     {
-      id: 2,
+      id: 4,
       title: "Zizy PDF Maker",
       category: "Apps",
       url: "https://pdfmakerzizy.netlify.app",
@@ -50,7 +50,7 @@ export default function Portfolio() {
       image: "1.png",
     },
     {
-      id: 3,
+      id: 5,
       title: "Bank App",
       category: "Apps",
       url: "https://secure-bank-git-main-samras-projects-c05660e5.vercel.app",
@@ -58,7 +58,7 @@ export default function Portfolio() {
       image: "0.png",
     },
     {
-      id: 4,
+      id: 6,
       title: "OpenClaw AI Guardian",
       category: "Apps",
       url: "https://open-claw-sigma.vercel.app/",

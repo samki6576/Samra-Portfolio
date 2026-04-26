@@ -35,9 +35,9 @@ export default function Nav() {
     >
       <div className={`flex items-center justify-between mx-auto transition-all duration-700 ease-[0.16,1,0.3,1] ${isTop ? 'max-w-7xl' : 'bg-[#111111]/80 backdrop-blur-xl border border-white/10 rounded-full px-10 py-5 shadow-2xl gap-16'}`}>
         
-        <span className={`text-white font-bold tracking-tighter text-xl transition-all duration-700 ${!isTop ? 'hidden' : 'mix-blend-difference'}`}>
-          S.S
-        </span>
+        <div className={`transition-all duration-700 ${!isTop ? 'hidden' : 'mix-blend-difference'}`}>
+          <img src="/logo.png" alt="Samra Portfolio" className="h-8 w-auto" />
+        </div>
 
         <div className={`flex items-center gap-10 transition-all duration-700 ${isTop ? 'mix-blend-difference' : ''}`}>
           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-colors outline-none cursor-none view-project">
