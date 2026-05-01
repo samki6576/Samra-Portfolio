@@ -31,7 +31,7 @@ export default function Portfolio() {
       category: "Apps",
       url: "https://habit-tracker-git-main-samras-projects-c05660e5.vercel.app",
       year: "2026",
-      image: "t.png",
+      image: "poo.png",
     },
     {
       id: 3,
