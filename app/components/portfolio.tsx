@@ -43,6 +43,15 @@ export default function Portfolio() {
     },
     {
       id: 4,
+      title: "CarbonLedger AI",
+      category: "Apps",
+      url: "https://carbonledger-ai.netlify.app/",
+      year: "2025",
+      image: "jk.png",
+    },
+
+    {
+      id: 4,
       title: "Zizy PDF Maker",
       category: "Apps",
       url: "https://pdfmakerzizy.netlify.app",
