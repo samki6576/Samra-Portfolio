@@ -47,7 +47,7 @@ export default function Portfolio() {
       category: "Apps",
       url: "https://carbonledger-ai.netlify.app/",
       year: "2025",
-      image: "jk.png",
+      image: "jk.jpg",
     },
 
     {
