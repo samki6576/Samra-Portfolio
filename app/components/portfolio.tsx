@@ -30,7 +30,7 @@ export default function Portfolio() {
       title: "Habit Tracker",
       category: "Apps",
       url: "https://habit-tracker-git-main-samras-projects-c05660e5.vercel.app",
-      year: "2025",
+      year: "2026",
       image: "t.png",
     },
     {
@@ -38,7 +38,7 @@ export default function Portfolio() {
       title: "VitalSign AI",
       category: "Apps",
       url: "https://vital-sign-ai.vercel.app/",
-      year: "2025",
+      year: "2026",
       image: "ti.png",
     },
     {
@@ -46,7 +46,7 @@ export default function Portfolio() {
       title: "CarbonLedger AI",
       category: "Apps",
       url: "https://carbonledger-ai.netlify.app/",
-      year: "2025",
+      year: "2026",
       image: "jk.jpg",
     },
 
@@ -55,7 +55,7 @@ export default function Portfolio() {
       title: "Zizy PDF Maker",
       category: "Apps",
       url: "https://pdfmakerzizy.netlify.app",
-      year: "2025",
+      year: "2026",
       image: "1.png",
     },
     {
@@ -63,7 +63,7 @@ export default function Portfolio() {
       title: "Bank App",
       category: "Apps",
       url: "https://secure-bank-git-main-samras-projects-c05660e5.vercel.app",
-      year: "2025",
+      year: "2026",
       image: "0.png",
     },
     {
@@ -71,7 +71,7 @@ export default function Portfolio() {
       title: "OpenClaw AI Guardian",
       category: "Apps",
       url: "https://open-claw-sigma.vercel.app/",
-      year: "2025",
+      year: "2026",
       image: "https://images.seeklogo.com/logo-png/66/1/openclaw-logo-png_seeklogo-665449.png?v=1971850109529183720",
     },
   ]
