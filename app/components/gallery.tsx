@@ -21,6 +21,13 @@ export default function Gallery() {
       link: "https://ratrmylasttext.netlify.app",
     },
     {
+      src: "/beauty.png",
+      alt: "Art piece 1",
+      title: "AI-Powered Virtual Try-On",
+      link: "https://second-option.vercel.app",
+    },
+
+    {
       src: "/7.png",
       alt: "Art piece 1",
       title: "Ecommerce-Website",
