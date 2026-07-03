@@ -74,6 +74,14 @@ export default function Portfolio() {
       year: "2026",
       image: "https://images.seeklogo.com/logo-png/66/1/openclaw-logo-png_seeklogo-665449.png?v=1971850109529183720",
     },
+     {
+      id: 6,
+      title: "Perfect Table",
+      category: "Apps",
+      url: "https://restaurants-lime.vercel.app/",
+      year: "2026",
+      image: "",
+    },
   ]
 
   const filteredWorks = works.filter((work) => (selectedCategory === "all" ? true : work.category === selectedCategory))
