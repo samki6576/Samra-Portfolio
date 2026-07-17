@@ -15,6 +15,12 @@ export default function Portfolio() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"])
 
   const works = [
+    {  id: 7,
+      title: "ResumeForge",
+      category: "Apps",
+      url:"https://resumeforge-h.vercel.app",
+      year: "2026",
+      image: "resume.png",},
     {
       id: 1,
       image: "/lol.png",
@@ -41,6 +47,23 @@ export default function Portfolio() {
       year: "2026",
       image: "ti.png",
     },
+     {
+      id: 9,
+      title: "AgentPassport: Token Vault",
+      category: "Apps",
+      url: "https://agent-password.vercel.app",
+      year: "2026",
+      image: "agent.png",
+    },
+      {
+      id: 8,
+      title: "RemitX",
+      category: "Apps",
+      url: "https://remitx-six.vercel.app",
+      year: "2026",
+      image: "remitx.png",
+    },
+    
     {
       id: 4,
       title: "CarbonLedger AI",
@@ -80,7 +103,7 @@ export default function Portfolio() {
       category: "Apps",
       url: "https://restaurants-lime.vercel.app/",
       year: "2026",
-      image: "",
+      image: "food.png",
     },
   ]
 
