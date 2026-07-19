@@ -2,6 +2,8 @@
 
 import { useState, useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
+import { ArrowUpRight } from "lucide-react"
+import { appWorks } from "./projects-data"
 
 export default function Portfolio() {
   const [selectedCategory] = useState("all")
@@ -14,100 +16,9 @@ export default function Portfolio() {
   // Smooth translation for horizontal scroll
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"])
 
-  const works = [
-    {  id: 7,
-      title: "ResumeForge",
-      category: "Apps",
-      url:"https://resumeforge-h.vercel.app",
-      year: "2026",
-      image: "resume.png",},
-    {
-      id: 1,
-      image: "/lol.png",
-      category: "Games",
-      alt: "Breakfast Blitz",
-      title: "Breakfast Blitz Game",
-      url: "https://breakfast-v8a1.vercel.app/",
-
-
-    },
-    {
-      id: 2,
-      title: "Habit Tracker",
-      category: "Apps",
-      url: "https://habit-tracker-git-main-samras-projects-c05660e5.vercel.app",
-      year: "2026",
-      image: "poo.png",
-    },
-    {
-      id: 3,
-      title: "VitalSign AI",
-      category: "Apps",
-      url: "https://vital-sign-ai.vercel.app/",
-      year: "2026",
-      image: "ti.png",
-    },
-     {
-      id: 9,
-      title: "AgentPassport: Token Vault",
-      category: "Apps",
-      url: "https://agent-password.vercel.app",
-      year: "2026",
-      image: "agent.png",
-    },
-      {
-      id: 8,
-      title: "RemitX",
-      category: "Apps",
-      url: "https://remitx-six.vercel.app",
-      year: "2026",
-      image: "remitx.png",
-    },
-    
-    {
-      id: 4,
-      title: "CarbonLedger AI",
-      category: "Apps",
-      url: "https://carbonledger-ai.netlify.app/",
-      year: "2026",
-      image: "jk.jpg",
-    },
-
-    {
-      id: 4,
-      title: "Zizy PDF Maker",
-      category: "Apps",
-      url: "https://pdfmakerzizy.netlify.app",
-      year: "2026",
-      image: "1.png",
-    },
-    {
-      id: 5,
-      title: "Bank App",
-      category: "Apps",
-      url: "https://secure-bank-git-main-samras-projects-c05660e5.vercel.app",
-      year: "2026",
-      image: "0.png",
-    },
-    {
-      id: 6,
-      title: "OpenClaw AI Guardian",
-      category: "Apps",
-      url: "https://open-claw-sigma.vercel.app/",
-      year: "2026",
-      image: "https://images.seeklogo.com/logo-png/66/1/openclaw-logo-png_seeklogo-665449.png?v=1971850109529183720",
-    },
-     {
-      id: 6,
-      title: "Perfect Table",
-      category: "Apps",
-      url: "https://restaurants-lime.vercel.app/",
-      year: "2026",
-      image: "food.png",
-    },
-  ]
-
-  const filteredWorks = works.filter((work) => (selectedCategory === "all" ? true : work.category === selectedCategory))
+  const filteredWorks = appWorks.filter((work) =>
+    selectedCategory === "all" ? true : work.category === selectedCategory
+  )
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-[#020202]">
@@ -125,41 +36,57 @@ export default function Portfolio() {
           </div>
 
           {/* Horizontal Items */}
-          {filteredWorks.map((work, index) => (
-            <div key={work.id} className="min-w-[70vw] md:min-w-[40vw] h-[55vh] flex flex-col justify-center">
-              <a
-                href={work.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block w-full h-full overflow-hidden cursor-none view-project outline-none"
-              >
-                <div className="w-full h-full relative overflow-hidden bg-zinc-900/50 rounded-lg">
-                  <motion.img
-                    src={work.image || "/placeholder.svg"}
-                    alt={work.title}
-                    className="h-full w-full object-cover origin-center opacity-70 transition-all duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-105 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal"
-                    onError={(e) => {
-                      e.currentTarget.src = "/placeholder.svg"
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-blue-900/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700" />
-                </div>
+          {filteredWorks.map((work) => (
+            <a
+              key={work.id}
+              href={work.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex flex-col min-w-[80vw] sm:min-w-[60vw] md:min-w-[36vw] h-[65vh] outline-none cursor-none view-project"
+            >
+              {/* Image */}
+              <div className="relative w-full h-[52%] overflow-hidden bg-zinc-900/50 rounded-lg">
+                <motion.img
+                  src={work.image || "/placeholder.svg"}
+                  alt={work.title}
+                  className="h-full w-full object-cover origin-center opacity-80 transition-all duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-105 group-hover:opacity-100"
+                  onError={(e) => {
+                    e.currentTarget.src = "/placeholder.svg"
+                  }}
+                />
+                <div className="absolute inset-0 bg-blue-900/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700" />
+                <span className="absolute top-4 right-4 text-xs font-bold tracking-widest text-white/80 uppercase bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full">
+                  {work.year}
+                </span>
+              </div>
 
-                {/* Floating Hidden Info that reveals on hover */}
-                <div className="absolute top-8 right-8 overflow-hidden mix-blend-difference">
-                  <span className="text-xl font-bold tracking-widest text-white translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1] inline-block">
-                    {work.year}
-                  </span>
-                </div>
-
-                <div className="absolute bottom-10 left-10 overflow-hidden mix-blend-difference w-full pr-10">
-                  <h3 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter text-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-700 ease-[0.16,1,0.3,1]">
+              {/* Persistent info block - always visible, no hover required */}
+              <div className="flex flex-col flex-1 pt-6">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tighter text-white">
                     {work.title}
                   </h3>
-                  <div className="w-full h-[2px] bg-white mt-4 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 ease-[0.16,1,0.3,1] delay-100 max-w-[80%]"></div>
+                  <ArrowUpRight className="w-6 h-6 text-white/40 shrink-0 mt-1 transition-all duration-500 group-hover:text-blue-400 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>
-              </a>
-            </div>
+
+                <p className="mt-3 text-sm md:text-base text-white/60 leading-relaxed max-w-md">
+                  {work.description}
+                </p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {work.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-[11px] uppercase tracking-wider font-semibold text-white/70 border border-white/15 rounded-full px-3 py-1"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="w-full h-px bg-white/10 mt-auto pt-4 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[0.16,1,0.3,1]" />
+              </div>
+            </a>
           ))}
 
           {/* End padding block */}

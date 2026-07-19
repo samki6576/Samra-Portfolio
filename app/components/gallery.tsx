@@ -1,8 +1,9 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { title } from "process"
 import { useRef } from "react"
+import { ArrowUpRight } from "lucide-react"
+import { selectedWorks } from "./projects-data"
 
 export default function Gallery() {
   const targetRef = useRef<HTMLDivElement>(null)
@@ -12,65 +13,6 @@ export default function Gallery() {
 
   // Smooth translation for the horizontal scroll
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"])
-
-  const images = [
-    {
-      src: "/de.png",
-      alt: "Art piece 1",
-      title: "Rate My Last Text",
-      link: "https://ratrmylasttext.netlify.app",
-    },
-    {
-      src: "/beauty.png",
-      alt: "Art piece 1",
-      title: "AI-Powered Virtual Try-On",
-      link: "https://second-option.vercel.app",
-    },
-
-    {
-      src: "/7.png",
-      alt: "Art piece 1",
-      title: "Ecommerce-Website",
-      link: "https://elegance-ecommerce-website-git-f3c38a-samras-projects-c05660e5.vercel.app",
-    },
-
-    {
-      src: "/8.png",
-      alt: "Art piece 2",
-      title: "Ocean-Explorer",
-      link: "https://ocean-explorer-git-main-samras-projects-c05660e5.vercel.app",
-    },
-    {
-      src: "/6.png",
-      alt: "Art piece 3",
-      title: "Blog-Website",
-      link: "https://blog-space-git-main-samras-projects-c05660e5.vercel.app",
-    },
-    {
-      src: "/io.png",
-      alt: "Art piece 3",
-      title: "THE COURT shoes store",
-      link: "https://the-court-theta.vercel.app",
-    },
-    {
-      src: "/9.jpg",
-      alt: "Art piece 4",
-      title: "Golden Crust",
-      link: "https://bakery-git-main-samras-projects-c05660e5.vercel.app",
-    },
-    {
-      src: "/5.png",
-      alt: "Art piece 5",
-      title: "Space 3D",
-      link: "https://3-d-space-explorer-git-main-samras-projects-c05660e5.vercel.app",
-    },
-    {
-      src: "/a.jpg",
-      alt: "Bella Vista Pizzeria",
-      title: "Bella Vista",
-      link: "https://bella-vista-pizzeria-git-main-samras-projects-c05660e5.vercel.app",
-    },]
-
 
   return (
     <section ref={targetRef} className="relative h-[400vh] bg-[#050505]">
@@ -88,41 +30,57 @@ export default function Gallery() {
           </div>
 
           {/* Horizontal Items */}
-          {images.map((image, index) => (
-            <div key={index} className="min-w-[85vw] md:min-w-[50vw] h-[60vh] sm:h-[70vh] flex flex-col justify-center">
-              <a
-                href={image.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block w-full h-full overflow-hidden cursor-none view-project outline-none"
-              >
-                <div className="w-full h-full relative overflow-hidden bg-zinc-900">
-                  <motion.img
-                    src={image.src || "/placeholder.svg"}
-                    alt={image.alt}
-                    className="h-full w-full object-cover origin-center opacity-80 transition-all duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-105 group-hover:opacity-100"
-                    onError={(e) => {
-                      e.currentTarget.src = "/placeholder.svg"
-                    }}
-                  />
-                  {/* Subtle Dark Overlay */}
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
+          {selectedWorks.map((work, index) => (
+            <a
+              key={work.id}
+              href={work.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex flex-col min-w-[85vw] sm:min-w-[60vw] md:min-w-[42vw] h-[75vh] outline-none cursor-none view-project"
+            >
+              {/* Image */}
+              <div className="relative w-full h-[58%] overflow-hidden bg-zinc-900 rounded-lg">
+                <motion.img
+                  src={work.image || "/placeholder.svg"}
+                  alt={work.title}
+                  className="h-full w-full object-cover origin-center opacity-85 transition-all duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-105 group-hover:opacity-100"
+                  onError={(e) => {
+                    e.currentTarget.src = "/placeholder.svg"
+                  }}
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
+                <span className="absolute top-4 left-4 text-2xl font-light text-white/70">
+                  0{index + 1}
+                </span>
+              </div>
+
+              {/* Persistent info block - always visible, no hover required */}
+              <div className="flex flex-col flex-1 pt-6">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-3xl md:text-4xl font-bold uppercase tracking-tighter text-white">
+                    {work.title}
+                  </h3>
+                  <ArrowUpRight className="w-7 h-7 text-white/40 shrink-0 mt-1 transition-all duration-500 group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>
 
-                {/* Floating Hidden Title that reveals on hover */}
-                <div className="absolute bottom-10 left-10 overflow-hidden mix-blend-difference">
-                  <h3 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter text-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-700 ease-[0.16,1,0.3,1]">
-                    {image.title}
-                  </h3>
+                <p className="mt-3 text-base text-white/60 leading-relaxed max-w-lg">
+                  {work.description}
+                </p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {work.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-[11px] uppercase tracking-wider font-semibold text-white/70 border border-white/15 rounded-full px-3 py-1"
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
-                {/* Index Number */}
-                <div className="absolute top-10 left-10 mix-blend-difference">
-                  <span className="text-2xl font-light text-white/70">
-                    0{index + 1}
-                  </span>
-                </div>
-              </a>
-            </div>
+
+                <div className="w-full h-px bg-white/10 mt-auto pt-4 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-[0.16,1,0.3,1]" />
+              </div>
+            </a>
           ))}
 
           {/* End padding block */}
