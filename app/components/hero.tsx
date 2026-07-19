@@ -58,7 +58,7 @@ export default function Hero() {
           className="mt-12 flex flex-col md:flex-row gap-8 md:gap-24 mix-blend-difference z-20"
         >
           <p className="text-xl sm:text-3xl font-light tracking-wide max-w-md text-white/90 leading-snug">
-            Junior Technical Project Manager 
+    Technical Project Manager 
  <br className="hidden sm:block" />Cloud & AI Enthusiast
 
           </p>
