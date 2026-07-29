@@ -58,8 +58,7 @@ export default function Hero() {
           className="mt-12 flex flex-col md:flex-row gap-8 md:gap-24 mix-blend-difference z-20"
         >
           <p className="text-xl sm:text-3xl font-light tracking-wide max-w-md text-white/90 leading-snug">
-    Technical Project Manager 
- <br className="hidden sm:block" />Cloud & AI Enthusiast
+Full Stack Developer <br className="hidden sm:block" />Cloud & AI Enthusiast
 
           </p>
           <div className="flex flex-col gap-4 max-w-xs">
