@@ -23,7 +23,7 @@ export default function Footer() {
               LinkedIn
             </motion.a>
             <motion.a
-              href="https://github.com/samrasdra-cmyk"
+              href="https://github.com/samki6576"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors text-sm font-bold uppercase tracking-widest"
