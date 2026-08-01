@@ -15,7 +15,6 @@ export const appWorks: Project[] = [
   id: "codecatalyst",
     title: "CodeCatalyst – Multi-Agent AI Repository Modernizer",
     description: "An autonomous AI-powered system that analyzes legacy code repositories and automatically generates migration roadmaps (JavaScript → TypeScript, Python 2 → 3) using a multi-agent LangGraph orchestration with real-time streaming.",
-    longDescription: "CodeCatalyst is a production-grade microservices application that orchestrates 5 specialized AI agents (Supervisor, Planner, Security, Refactor, Critic) to analyze GitHub repositories, detect vulnerabilities, and modernize codebases. Built with a decoupled architecture using RabbitMQ for async processing, the system streams live agent reasoning to the frontend via WebSockets, providing full transparency into the AI decision-making process.",
     tech: [
       "React",
     "Node.js",
@@ -33,20 +32,6 @@ export const appWorks: Project[] = [
   github: "https://github.com/samrasdra-cmyk/code-catalyst",
   year: "2026",
   image: "cata.png",
-  features: [
-    "5 specialized LangGraph agents with Critic-led correction loop",
-    "Real-time WebSocket streaming of agent reasoning",
-    "Self-populating RAG pipeline for security vulnerability detection",
-    "Zero-cost architecture with graceful fallbacks",
-    "Asynchronous microservices with RabbitMQ"
-  ],
-  challenges: [
-    "Orchestrating multi-agent state management with LangGraph",
-    "Implementing reliable WebSocket connections in production",
-    "Building a self-populating RAG pipeline with ChromaDB",
-    "Managing API rate limits with graceful fallback mechanisms",
-    "Deploying a multi-service Docker application on Render"
-  ],
   impact: "Successfully migrates legacy codebases with automated security auditing and syntax modernization, reducing manual migration time by an estimated 70%.",
   status: "live"
 },

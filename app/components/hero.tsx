@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { ArrowUpRight, Github, Linkedin } from "lucide-react"
 
 export default function Hero() {
   return (
@@ -57,10 +58,40 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="mt-12 flex flex-col md:flex-row gap-8 md:gap-24 mix-blend-difference z-20"
         >
-          <p className="text-xl sm:text-3xl font-light tracking-wide max-w-md text-white/90 leading-snug">
-Full Stack Developer <br className="hidden sm:block" />Cloud & AI Enthusiast
+          <div className="max-w-md">
+            <p className="text-xl sm:text-3xl font-light tracking-wide text-white/90 leading-snug">
+              Full Stack Developer <br className="hidden sm:block" />Cloud & AI Enthusiast
+            </p>
 
-          </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <motion.a
+                href="https://www.linkedin.com/in/samra-safdar-16833b30b"
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-medium uppercase tracking-[0.25em] text-white/90 backdrop-blur-md transition-all hover:border-cyan-400/50 hover:bg-cyan-400/10"
+              >
+                <Linkedin className="h-4 w-4" />
+                LinkedIn
+                <ArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </motion.a>
+
+              <motion.a
+                href="https://github.com/samki6576"
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-medium uppercase tracking-[0.25em] text-white/90 backdrop-blur-md transition-all hover:border-violet-400/50 hover:bg-violet-400/10"
+              >
+                <Github className="h-4 w-4" />
+                GitHub
+                <ArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </motion.a>
+            </div>
+          </div>
+
           <div className="flex flex-col gap-4 max-w-xs">
             <p className="text-sm text-white/60 leading-relaxed uppercase tracking-widest font-semibold">
               Location
@@ -71,9 +102,8 @@ Full Stack Developer <br className="hidden sm:block" />Cloud & AI Enthusiast
             <p className="text-sm text-white/60 leading-relaxed uppercase tracking-widest font-semibold">
               Mission
             </p>
-            <p className="text-sm text-white/80 leading-relaxed">
-              Crafting premium digital experiences through hyper-minimal design and robust engineering.
-            </p>
+            <p className="text-sm text-white/80 leading-relaxed uppercase tracking-widest">
+            Make things that help</p>
           </div>
         </motion.div>
       </div>
