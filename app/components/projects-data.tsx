@@ -12,32 +12,32 @@ export type Project = {
   status?: string
 }
 
-// Apps & tools — shown in the "Web Apps" section
+// ─── Apps & Games — shown in the "Web Apps" section ────────────────────────
 export const appWorks: Project[] = [
-     {
-  id: "codecatalyst",
+  {
+    id: "codecatalyst",
     title: "CodeCatalyst – Multi-Agent AI Repository Modernizer",
-    description: "An autonomous AI-powered system that analyzes legacy code repositories and automatically generates migration roadmaps (JavaScript → TypeScript, Python 2 → 3) using a multi-agent LangGraph orchestration with real-time streaming.",
+    description:
+      "An autonomous AI-powered system that analyzes legacy code repositories and automatically generates migration roadmaps (JavaScript → TypeScript, Python 2 → 3) using a multi-agent LangGraph orchestration with real-time streaming.",
     tech: [
       "React",
-    "Node.js",
-    "Python",
-    "LangGraph",
-    "Groq (Llama-3.1-70B)",
-    "ChromaDB",
-    "RabbitMQ",
-    "Docker",
-    "Socket.IO",
-    "Render"
-  ],
-  category: "App",
-  url: "https://code-catalyst-loqv.onrender.com/",
-  github: "https://github.com/samrasdra-cmyk/code-catalyst",
-  year: "2026",
-  image: "cata.png",
-
-},
-{
+      "Node.js",
+      "Python",
+      "LangGraph",
+      "Groq (Llama-3.1-70B)",
+      "ChromaDB",
+      "RabbitMQ",
+      "Docker",
+      "Socket.IO",
+      "Render",
+    ],
+    category: "Apps", // ✅ fixed from "App"
+    url: "https://code-catalyst-loqv.onrender.com/",
+    github: "https://github.com/samrasdra-cmyk/code-catalyst",
+    year: "2026",
+    image: "cata.png",
+  },
+  {
     id: "resumeforge",
     title: "ResumeForge",
     description:
@@ -54,7 +54,7 @@ export const appWorks: Project[] = [
     description:
       "Fast-paced browser arcade game where players sort and serve orders against the clock — built to practice game-loop logic and timed interactions.",
     tech: ["JavaScript", "Canvas API"],
-    category: "Games",
+    category: "Games", // ✅ stays as Games
     url: "https://breakfast-v8a1.vercel.app/",
     year: "2026",
     image: "/lol.png",
@@ -136,7 +136,6 @@ export const appWorks: Project[] = [
     year: "2026",
     image: "0.png",
   },
-
   {
     id: "openclaw",
     title: "OpenClaw AI Guardian",
@@ -146,6 +145,7 @@ export const appWorks: Project[] = [
     category: "Apps",
     url: "https://open-claw-sigma.vercel.app/",
     year: "2026",
+    // ⚠️ External image URL – consider hosting it locally for consistency
     image:
       "https://images.seeklogo.com/logo-png/66/1/openclaw-logo-png_seeklogo-665449.png?v=1971850109529183720",
   },
@@ -162,7 +162,7 @@ export const appWorks: Project[] = [
   },
 ]
 
-// Websites — shown in the "Selected Works" section
+// ─── Websites — shown in the "Selected Works" section ──────────────────────
 export const selectedWorks: Project[] = [
   {
     id: "rate-my-last-text",
