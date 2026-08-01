@@ -11,7 +11,31 @@ export type Project = {
 
 // Apps & tools — shown in the "Web Apps" section
 export const appWorks: Project[] = [
-  {
+     {
+  id: "codecatalyst",
+    title: "CodeCatalyst – Multi-Agent AI Repository Modernizer",
+    description: "An autonomous AI-powered system that analyzes legacy code repositories and automatically generates migration roadmaps (JavaScript → TypeScript, Python 2 → 3) using a multi-agent LangGraph orchestration with real-time streaming.",
+    tech: [
+      "React",
+    "Node.js",
+    "Python",
+    "LangGraph",
+    "Groq (Llama-3.1-70B)",
+    "ChromaDB",
+    "RabbitMQ",
+    "Docker",
+    "Socket.IO",
+    "Render"
+  ],
+  category: "AI / Full-Stack",
+  url: "https://code-catalyst-loqv.onrender.com/",
+  github: "https://github.com/samrasdra-cmyk/code-catalyst",
+  year: "2026",
+  image: "cata.png",
+  impact: "Successfully migrates legacy codebases with automated security auditing and syntax modernization, reducing manual migration time by an estimated 70%.",
+  status: "live"
+},
+  ,{
     id: "resumeforge",
     title: "ResumeForge",
     description:
@@ -110,6 +134,7 @@ export const appWorks: Project[] = [
     year: "2026",
     image: "0.png",
   },
+
   {
     id: "openclaw",
     title: "OpenClaw AI Guardian",
