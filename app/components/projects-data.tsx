@@ -3,10 +3,13 @@ export type Project = {
   title: string
   description: string
   tech: string[]
-  category: "Apps" | "Games" | "Websites"
+  category: "Apps" | "Games" | "Websites" | "AI / Full-Stack"
   url: string
   image: string
   year: string
+  github?: string
+  impact?: string
+  status?: string
 }
 
 // Apps & tools — shown in the "Web Apps" section
@@ -34,7 +37,7 @@ export const appWorks: Project[] = [
   image: "cata.png",
 
 },
-  ,{
+{
     id: "resumeforge",
     title: "ResumeForge",
     description:
