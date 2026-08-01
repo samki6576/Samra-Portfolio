@@ -3,10 +3,13 @@ export type Project = {
   title: string
   description: string
   tech: string[]
-  category: "Apps" | "Games" | "Websites"
+  category: "Apps" | "Games" | "Websites" | "AI / Full-Stack"
   url: string
   image: string
   year: string
+  github?: string
+  impact?: string
+  status?: string
 }
 
 // Apps & tools — shown in the "Web Apps" section
@@ -35,7 +38,7 @@ export const appWorks: Project[] = [
   impact: "Successfully migrates legacy codebases with automated security auditing and syntax modernization, reducing manual migration time by an estimated 70%.",
   status: "live"
 },
-  ,{
+{
     id: "resumeforge",
     title: "ResumeForge",
     description:
