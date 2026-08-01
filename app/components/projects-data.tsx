@@ -30,7 +30,7 @@ export const appWorks: Project[] = [
     "Socket.IO",
     "Render"
   ],
-  category: "AI"|"Full-Stack",
+  category: "AI",
   url: "https://code-catalyst-loqv.onrender.com/",
   github: "https://github.com/samrasdra-cmyk/code-catalyst",
   year: "2026",
