@@ -12,7 +12,7 @@ export type Project = {
   status?: string
 }
 
-// Apps & tools — shown in the "Web Apps" section
+// ─── Apps & Games — shown in the "Web Apps" section ────────────────────────
 export const appWorks: Project[] = [
   {
     id: "codecatalyst",
@@ -57,7 +57,7 @@ export const appWorks: Project[] = [
     description:
       "Fast-paced browser arcade game where players sort and serve orders against the clock — built to practice game-loop logic and timed interactions.",
     tech: ["JavaScript", "Canvas API"],
-    category: "Games",
+    category: "Games", // ✅ stays as Games
     url: "https://breakfast-v8a1.vercel.app/",
     year: "2026",
     image: "/lol.png",
@@ -176,7 +176,6 @@ export const appWorks: Project[] = [
     year: "2026",
     image: "0.png",
   },
-
   {
     id: "openclaw",
     title: "OpenClaw AI Guardian",
@@ -186,6 +185,7 @@ export const appWorks: Project[] = [
     category: "Apps",
     url: "https://open-claw-sigma.vercel.app/",
     year: "2026",
+    // ⚠️ External image URL – consider hosting it locally for consistency
     image:
       "https://images.seeklogo.com/logo-png/66/1/openclaw-logo-png_seeklogo-665449.png?v=1971850109529183720",
   },
@@ -202,7 +202,7 @@ export const appWorks: Project[] = [
   },
 ]
 
-// Websites — shown in the "Selected Works" section
+// ─── Websites — shown in the "Selected Works" section ──────────────────────
 export const selectedWorks: Project[] = [
   {
     id: "rate-my-last-text",
