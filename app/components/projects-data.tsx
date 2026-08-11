@@ -31,11 +31,14 @@ export const appWorks: Project[] = [
       "Socket.IO",
       "Render",
     ],
-    category: "Apps", // ✅ fixed from "App"
+    category: "AI / Full-Stack",
     url: "https://code-catalyst-loqv.onrender.com/",
     github: "https://github.com/samrasdra-cmyk/code-catalyst",
     year: "2026",
     image: "cata.png",
+    impact:
+      "Successfully migrates legacy codebases with automated security auditing and syntax modernization, reducing manual migration time by an estimated 70%.",
+    status: "live",
   },
   {
     id: "resumeforge",
@@ -58,6 +61,17 @@ export const appWorks: Project[] = [
     url: "https://breakfast-v8a1.vercel.app/",
     year: "2026",
     image: "/lol.png",
+  },
+  {
+    id: "wipe-out",
+    title: "Wipeout",
+    description:
+      "Tactical math game focused on place value practice, blending fast-paced educational gameplay with retro hacker styling.",
+    tech: ["Unity", "WebGL", "Android"],
+    category: "Games",
+    url: "https://wipe-out.vercel.app/",
+    year: "2026",
+    image: "5.png",
   },
   {
     id: "habit-tracker",
@@ -102,6 +116,32 @@ export const appWorks: Project[] = [
     url: "https://remitx-six.vercel.app",
     year: "2026",
     image: "remitx.png",
+  },
+  {
+    id: "samra-store",
+    title: "SamraStore",
+    description:
+      "Full-stack e-commerce platform with search, cart, checkout, wishlist, user auth, and admin product management in a modern glassmorphism UI.",
+    tech: ["Node.js", "Express", "MongoDB", "Tailwind CSS", "JavaScript"],
+    category: "Apps",
+    url: "https://samra-store.vercel.app/",
+    github: "https://github.com/samki6576/SamraStore",
+    year: "2026",
+    image: "food.png",
+    status: "live",
+  },
+  {
+    id: "socialhub",
+    title: "SocialHub",
+    description:
+      "Social network app with posts, likes, comments, follow feeds, hashtags, and real-time notifications in a polished glassmorphism interface.",
+    tech: ["Node.js", "Express", "MongoDB", "Tailwind CSS", "JavaScript"],
+    category: "Apps",
+    url: "https://socialhub-sand.vercel.app",
+    github: "https://github.com/samki6576/socialhub",
+    year: "2026",
+    image: "logo.png",
+    status: "live",
   },
   {
     id: "carbonledger-ai",
