@@ -39,6 +39,17 @@ export const appWorks: Project[] = [
   status: "live"
 },
 {
+    id: "Daa",
+    title: "ResumeForge",
+    description:
+      "Resume builder that lets job seekers pick a layout, fill in their experience once, and export a polished, ATS-friendly PDF.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    category: "Apps",
+    url: "https://resumeforge-h.vercel.app",
+    year: "2026",
+    image: "resume.png",
+  },
+{
     id: "resumeforge",
     title: "ResumeForge",
     description:
@@ -59,6 +70,17 @@ export const appWorks: Project[] = [
     url: "https://breakfast-v8a1.vercel.app/",
     year: "2026",
     image: "/lol.png",
+  },
+  {
+    id: "wipe-out",
+    title: "Wipeout",
+    description:
+      "Tactical math game focused on place value practice, blending fast-paced educational gameplay with retro hacker styling.",
+    tech: ["Unity", "WebGL", "Android"],
+    category: "Games",
+    url: "https://wipe-out.vercel.app/",
+    year: "2026",
+    image: "/wipe.png",
   },
   {
     id: "habit-tracker",
@@ -103,6 +125,31 @@ export const appWorks: Project[] = [
     url: "https://remitx-six.vercel.app",
     year: "2026",
     image: "remitx.png",
+  },
+  {
+    id: "samra-store",
+    title: "SamraStore",
+    description:
+      "Full-stack e-commerce platform with search, cart, checkout, wishlist, user auth, and admin product management in a modern glassmorphism UI.",
+    tech: ["Node.js", "Express", "MongoDB", "Tailwind CSS", "JavaScript"],
+    category: "Apps",
+    url: "https://samra-store.vercel.app/",
+    github: "https://github.com/samki6576/SamraStore",
+    year: "2026",
+    image: "samstore.png",
+    status: "live"
+  },
+  {
+    id: "socialhub",
+    title: "SocialHub",
+    description:
+      "Social network app with posts, likes, comments, follow feeds, hashtags, and real-time notifications in a polished glassmorphism interface.",
+    tech: ["Node.js", "Express", "MongoDB", "Tailwind CSS", "JavaScript"],
+    category: "Apps",
+    url: "https://socialhub-sand.vercel.app",
+    year: "2026",
+    image: "social.png",
+    status: "live"
   },
   {
     id: "carbonledger-ai",
