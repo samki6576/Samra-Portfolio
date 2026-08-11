@@ -12,35 +12,44 @@ export type Project = {
   status?: string
 }
 
-// ─── Apps & Games — shown in the "Web Apps" section ────────────────────────
+// Apps & tools — shown in the "Web Apps" section
 export const appWorks: Project[] = [
-  {
-    id: "codecatalyst",
+     {
+  id: "codecatalyst",
     title: "CodeCatalyst – Multi-Agent AI Repository Modernizer",
-    description:
-      "An autonomous AI-powered system that analyzes legacy code repositories and automatically generates migration roadmaps (JavaScript → TypeScript, Python 2 → 3) using a multi-agent LangGraph orchestration with real-time streaming.",
+    description: "An autonomous AI-powered system that analyzes legacy code repositories and automatically generates migration roadmaps (JavaScript → TypeScript, Python 2 → 3) using a multi-agent LangGraph orchestration with real-time streaming.",
     tech: [
       "React",
-      "Node.js",
-      "Python",
-      "LangGraph",
-      "Groq (Llama-3.1-70B)",
-      "ChromaDB",
-      "RabbitMQ",
-      "Docker",
-      "Socket.IO",
-      "Render",
-    ],
-    category: "AI / Full-Stack",
-    url: "https://code-catalyst-loqv.onrender.com/",
-    github: "https://github.com/samrasdra-cmyk/code-catalyst",
+    "Node.js",
+    "Python",
+    "LangGraph",
+    "Groq (Llama-3.1-70B)",
+    "ChromaDB",
+    "RabbitMQ",
+    "Docker",
+    "Socket.IO",
+    "Render"
+  ],
+  category: "AI / Full-Stack",
+  url: "https://code-catalyst-loqv.onrender.com/",
+  github: "https://github.com/samrasdra-cmyk/code-catalyst",
+  year: "2026",
+  image: "cata.png",
+  impact: "Successfully migrates legacy codebases with automated security auditing and syntax modernization, reducing manual migration time by an estimated 70%.",
+  status: "live"
+},
+{
+    id: "Daa",
+    title: "ResumeForge",
+    description:
+      "Resume builder that lets job seekers pick a layout, fill in their experience once, and export a polished, ATS-friendly PDF.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    category: "Apps",
+    url: "https://resumeforge-h.vercel.app",
     year: "2026",
-    image: "cata.png",
-    impact:
-      "Successfully migrates legacy codebases with automated security auditing and syntax modernization, reducing manual migration time by an estimated 70%.",
-    status: "live",
+    image: "resume.png",
   },
-  {
+{
     id: "resumeforge",
     title: "ResumeForge",
     description:
@@ -57,7 +66,7 @@ export const appWorks: Project[] = [
     description:
       "Fast-paced browser arcade game where players sort and serve orders against the clock — built to practice game-loop logic and timed interactions.",
     tech: ["JavaScript", "Canvas API"],
-    category: "Games", // ✅ stays as Games
+    category: "Games",
     url: "https://breakfast-v8a1.vercel.app/",
     year: "2026",
     image: "/lol.png",
@@ -71,7 +80,7 @@ export const appWorks: Project[] = [
     category: "Games",
     url: "https://wipe-out.vercel.app/",
     year: "2026",
-    image: "5.png",
+    image: "/wipe.png",
   },
   {
     id: "habit-tracker",
@@ -127,8 +136,8 @@ export const appWorks: Project[] = [
     url: "https://samra-store.vercel.app/",
     github: "https://github.com/samki6576/SamraStore",
     year: "2026",
-    image: "food.png",
-    status: "live",
+    image: "samstore.png",
+    status: "live"
   },
   {
     id: "socialhub",
@@ -138,10 +147,9 @@ export const appWorks: Project[] = [
     tech: ["Node.js", "Express", "MongoDB", "Tailwind CSS", "JavaScript"],
     category: "Apps",
     url: "https://socialhub-sand.vercel.app",
-    github: "https://github.com/samki6576/socialhub",
     year: "2026",
-    image: "logo.png",
-    status: "live",
+    image: "social.png",
+    status: "live"
   },
   {
     id: "carbonledger-ai",
@@ -176,6 +184,7 @@ export const appWorks: Project[] = [
     year: "2026",
     image: "0.png",
   },
+
   {
     id: "openclaw",
     title: "OpenClaw AI Guardian",
@@ -185,7 +194,6 @@ export const appWorks: Project[] = [
     category: "Apps",
     url: "https://open-claw-sigma.vercel.app/",
     year: "2026",
-    // ⚠️ External image URL – consider hosting it locally for consistency
     image:
       "https://images.seeklogo.com/logo-png/66/1/openclaw-logo-png_seeklogo-665449.png?v=1971850109529183720",
   },
@@ -202,7 +210,7 @@ export const appWorks: Project[] = [
   },
 ]
 
-// ─── Websites — shown in the "Selected Works" section ──────────────────────
+// Websites — shown in the "Selected Works" section
 export const selectedWorks: Project[] = [
   {
     id: "rate-my-last-text",
