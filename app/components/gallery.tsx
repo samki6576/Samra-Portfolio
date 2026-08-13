@@ -35,38 +35,44 @@ export default function Gallery() {
               href={work.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex flex-col min-w-[85vw] sm:min-w-[60vw] md:min-w-[42vw] h-[75vh] outline-none cursor-none view-project"
+              className="group relative flex flex-col min-w-[85vw] sm:min-w-[60vw] md:min-w-[42vw] h-[75vh] outline-none cursor-none view-project rounded-2xl overflow-hidden"
             >
               {/* Image */}
-              <div className="relative w-full h-[58%] overflow-hidden bg-zinc-900 rounded-lg">
+              <div className="relative w-full h-[58%] overflow-hidden bg-zinc-900 rounded-lg shadow-xl group-hover:shadow-2xl transition-shadow">
                 <motion.img
                   src={work.image || "/placeholder.svg"}
                   alt={work.title}
-                  className="h-full w-full object-cover origin-center opacity-85 transition-all duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-105 group-hover:opacity-100"
+                  className="h-full w-full object-cover origin-center opacity-85 transition-all duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-110 group-hover:opacity-100"
                   onError={(e) => {
                     e.currentTarget.src = "/placeholder.svg"
                   }}
                 />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:opacity-50 transition-opacity duration-700" />
 
                 {/* Index + Category badges */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                  <span className="text-2xl font-light text-white/70">
+                <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-20">
+                  <motion.span className="text-3xl font-light text-white/70 group-hover:text-white transition-colors">
                     0{index + 1}
-                  </span>
+                  </motion.span>
                   <div className="flex items-center gap-2">
                     {work.status === "live" && (
-                      <span className="flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-emerald-400 uppercase bg-emerald-500/20 border border-emerald-500/30 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <motion.span
+                        whileHover={{ scale: 1.05 }}
+                        className="flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-emerald-300 uppercase bg-emerald-500/30 border border-emerald-400/60 backdrop-blur-lg px-3 py-1.5 rounded-full shadow-lg shadow-emerald-500/20"
+                      >
                         <span className="relative flex h-1.5 w-1.5">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400"></span>
                         </span>
                         Live
-                      </span>
+                      </motion.span>
                     )}
-                    <span className="text-[10px] font-bold tracking-widest text-white/60 uppercase bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+                    <motion.span
+                      whileHover={{ scale: 1.05 }}
+                      className="text-[10px] font-bold tracking-widest text-white/70 uppercase bg-black/60 backdrop-blur-lg px-3 py-1.5 rounded-full border border-white/20 shadow-lg"
+                    >
                       {work.category}
-                    </span>
+                    </motion.span>
                   </div>
                 </div>
               </div>

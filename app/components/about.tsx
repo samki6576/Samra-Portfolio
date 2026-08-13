@@ -189,15 +189,20 @@ export default function About() {
             { target: 70, suffix: "%", label: "Migration Time Saved (AI)", color: "text-emerald-400" },
             { target: 100, suffix: "%", label: "Remote Ready", color: "text-amber-400" },
           ].map((stat, i) => (
-            <div
+            <motion.div
               key={stat.label}
-              className="rounded-2xl border border-white/8 bg-white/3 p-6 backdrop-blur-sm text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.5 + i * 0.1 }}
+              whileHover={{ y: -8, scale: 1.05 }}
+              className="group rounded-2xl border border-white/15 bg-gradient-to-br from-white/10 to-white/5 hover:from-white/20 hover:to-white/10 hover:border-white/40 p-8 backdrop-blur-lg text-center transition-all shadow-lg hover:shadow-2xl cursor-none view-project overflow-hidden"
             >
-              <p className={`text-4xl md:text-5xl font-bold tracking-tight mb-2 ${stat.color}`}>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500 bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
+              <p className={`text-5xl md:text-6xl font-bold tracking-tight mb-3 ${stat.color} relative z-10`}>
                 <Counter target={stat.target} suffix={stat.suffix} />
               </p>
-              <p className="text-[11px] text-white/40 uppercase tracking-widest leading-tight">{stat.label}</p>
-            </div>
+              <p className="text-[11px] text-white/50 uppercase tracking-widest leading-tight relative z-10">{stat.label}</p>
+            </motion.div>
           ))}
         </motion.div>
 
