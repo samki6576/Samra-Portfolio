@@ -11,7 +11,6 @@ export default function Gallery() {
     target: targetRef,
   })
 
-  // Smooth translation for the horizontal scroll
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"])
 
   return (
@@ -25,7 +24,7 @@ export default function Gallery() {
               Selected<br /><span className="text-primary/90">Works</span>
             </h2>
             <p className="mt-8 text-xl text-white/50 max-w-sm uppercase tracking-widest leading-relaxed">
-              A collection of e-commerce platforms, immersive 3D experiences, and creative web solutions.
+              E-commerce platforms, immersive 3D experiences, and creative web solutions.
             </p>
           </div>
 
@@ -49,12 +48,30 @@ export default function Gallery() {
                   }}
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
-                <span className="absolute top-4 left-4 text-2xl font-light text-white/70">
-                  0{index + 1}
-                </span>
+
+                {/* Index + Category badges */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                  <span className="text-2xl font-light text-white/70">
+                    0{index + 1}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    {work.status === "live" && (
+                      <span className="flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-emerald-400 uppercase bg-emerald-500/20 border border-emerald-500/30 backdrop-blur-sm px-3 py-1 rounded-full">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                        </span>
+                        Live
+                      </span>
+                    )}
+                    <span className="text-[10px] font-bold tracking-widest text-white/60 uppercase bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+                      {work.category}
+                    </span>
+                  </div>
+                </div>
               </div>
 
-              {/* Persistent info block - always visible, no hover required */}
+              {/* Persistent info block */}
               <div className="flex flex-col flex-1 pt-6">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="text-3xl md:text-4xl font-bold uppercase tracking-tighter text-white">

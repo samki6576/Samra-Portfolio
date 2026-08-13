@@ -38,17 +38,7 @@ export const appWorks: Project[] = [
   impact: "Successfully migrates legacy codebases with automated security auditing and syntax modernization, reducing manual migration time by an estimated 70%.",
   status: "live"
 },
-{
-    id: "Daa",
-    title: "ResumeForge",
-    description:
-      "Resume builder that lets job seekers pick a layout, fill in their experience once, and export a polished, ATS-friendly PDF.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-    category: "Apps",
-    url: "https://resumeforge-h.vercel.app",
-    year: "2026",
-    image: "resume.png",
-  },
+
 {
     id: "resumeforge",
     title: "ResumeForge",
