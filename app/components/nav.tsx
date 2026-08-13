@@ -51,7 +51,7 @@ export default function Nav() {
         className={`flex items-center justify-between mx-auto transition-all duration-700 ease-[0.16,1,0.3,1] ${
           isTop
             ? "max-w-7xl"
-            : "bg-[#111111]/80 backdrop-blur-xl border border-white/10 rounded-full px-10 py-5 shadow-2xl gap-10"
+            : "bg-[#111111]/70 backdrop-blur-2xl border border-white/20 rounded-full px-10 py-5 shadow-2xl shadow-black/50 gap-10"
         }`}
       >
         <div className={`transition-all duration-700 ${!isTop ? "hidden" : "mix-blend-difference"}`}>
@@ -59,38 +59,47 @@ export default function Nav() {
         </div>
 
         <div className={`flex items-center gap-8 transition-all duration-700 ${isTop ? "mix-blend-difference" : ""}`}>
-          <button
+          <motion.button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-colors outline-none cursor-none view-project"
+            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative cursor-none view-project px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
+            whileHover={{ y: -2 }}
           >
-            Home
-          </button>
-          <button
+            <span className="relative z-10">Home</span>
+            <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
+          </motion.button>
+          <motion.button
             onClick={() => scrollToSection(1)}
-            className="text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-colors outline-none cursor-none view-project"
+            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative cursor-none view-project px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
+            whileHover={{ y: -2 }}
           >
-            About
-          </button>
-          <button
+            <span className="relative z-10">About</span>
+            <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
+          </motion.button>
+          <motion.button
             onClick={() => scrollToSection(2)}
-            className="text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-colors outline-none cursor-none view-project"
+            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative cursor-none view-project px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
+            whileHover={{ y: -2 }}
           >
-            Work
-          </button>
-          <button
+            <span className="relative z-10">Work</span>
+            <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
+          </motion.button>
+          <motion.button
             onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
-            className="text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-colors outline-none cursor-none view-project"
+            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative cursor-none view-project px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
+            whileHover={{ y: -2 }}
           >
-            Contact
-          </button>
+            <span className="relative z-10">Contact</span>
+            <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
+          </motion.button>
           <motion.a
-            href="mailto:hismm8690@gmail.com"
-            whileHover={{ scale: 1.05 }}
+            href="mailto:samrasdra@gmail.com"
+            whileHover={{ scale: 1.08, y: -3 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white hover:bg-primary/80 transition-colors cursor-none view-project"
+            className="group relative flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500/40 to-emerald-400/40 border border-emerald-400/60 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300 hover:from-emerald-500/60 hover:to-emerald-400/60 hover:border-emerald-300 transition-all cursor-none view-project shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 overflow-hidden"
           >
-            <FileText className="h-3 w-3" />
-            Hire Me
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 via-emerald-300/20 to-emerald-400/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <FileText className="h-3.5 w-3.5 relative z-10" />
+            <span className="relative z-10">Hire Me</span>
           </motion.a>
         </div>
       </div>

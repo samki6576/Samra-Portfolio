@@ -38,54 +38,68 @@ export default function Portfolio() {
           {filteredWorks.map((work) => (
             <div
               key={work.id}
-              className="group relative flex flex-col min-w-[80vw] sm:min-w-[60vw] md:min-w-[36vw] h-[65vh]"
+              className="group relative flex flex-col min-w-[80vw] sm:min-w-[60vw] md:min-w-[36vw] h-[65vh] rounded-2xl overflow-hidden"
             >
               {/* Image */}
               <a
                 href={work.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative w-full h-[52%] overflow-hidden bg-zinc-900/50 rounded-lg block cursor-none view-project"
+                className="relative w-full h-[52%] overflow-hidden bg-zinc-900/50 rounded-lg block cursor-none view-project shadow-xl group-hover:shadow-2xl transition-shadow"
               >
                 <motion.img
                   src={work.image || "/placeholder.svg"}
                   alt={work.title}
-                  className="h-full w-full object-cover origin-center opacity-80 transition-all duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-105 group-hover:opacity-100"
+                  className="h-full w-full object-cover origin-center opacity-85 transition-all duration-1000 ease-[0.16,1,0.3,1] group-hover:scale-110 group-hover:opacity-100"
                   onError={(e) => {
                     e.currentTarget.src = "/placeholder.svg"
                   }}
                 />
-                <div className="absolute inset-0 bg-blue-900/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:opacity-50 transition-opacity duration-700" />
 
                 {/* Badges row */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                  <span className="text-xs font-bold tracking-widest text-white/80 uppercase bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full">
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20">
+                  <motion.span 
+                    whileHover={{ scale: 1.05 }}
+                    className="text-xs font-bold tracking-widest text-white uppercase bg-black/60 backdrop-blur-lg px-4 py-2 rounded-full border border-white/20 shadow-lg"
+                  >
                     {work.year}
-                  </span>
+                  </motion.span>
                   <div className="flex items-center gap-2">
                     {work.status === "live" && (
-                      <span className="flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-emerald-400 uppercase bg-emerald-500/20 border border-emerald-500/30 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <motion.span 
+                        whileHover={{ scale: 1.05 }}
+                        className="flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-emerald-300 uppercase bg-emerald-500/30 border border-emerald-400/60 backdrop-blur-lg px-3 py-1.5 rounded-full shadow-lg shadow-emerald-500/20"
+                      >
                         <span className="relative flex h-1.5 w-1.5">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400"></span>
                         </span>
                         Live
-                      </span>
+                      </motion.span>
                     )}
-                    <span className="text-[10px] font-bold tracking-widest text-white/60 uppercase bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+                    <motion.span 
+                      whileHover={{ scale: 1.05 }}
+                      className="text-[10px] font-bold tracking-widest text-white/70 uppercase bg-black/60 backdrop-blur-lg px-3 py-1.5 rounded-full border border-white/20 shadow-lg"
+                    >
                       {work.category}
-                    </span>
+                    </motion.span>
                   </div>
                 </div>
 
                 {/* Impact overlay on hover */}
                 {work.impact && (
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]">
-                    <div className="flex items-start gap-2">
-                      <TrendingUp className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
-                      <p className="text-xs text-white/90 leading-relaxed">{work.impact}</p>
+                  <motion.div 
+                    initial={{ y: 20, opacity: 0 }}
+                    whileHover={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-black/40 backdrop-blur-md p-5 z-10"
+                  >
+                    <div className="flex items-start gap-3">
+                      <TrendingUp className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
+                      <p className="text-sm text-white/90 leading-relaxed font-medium">{work.impact}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 )}
               </a>
 

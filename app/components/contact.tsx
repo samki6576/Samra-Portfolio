@@ -126,7 +126,7 @@ export default function Contact() {
           <div className="md:col-span-5">
             <div className="flex flex-col gap-5">
               <a
-                href="mailto:hismm8690@gmail.com"
+                href="mailto:samrasdra@gmail.com"
                 className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/3 hover:bg-white/6 hover:border-primary/30 transition-all duration-500 p-5"
               >
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/15 border border-primary/20">
@@ -134,7 +134,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-[10px] text-white/40 uppercase tracking-widest mb-0.5">Email</p>
-                  <p className="text-base font-medium text-white group-hover:text-primary transition-colors">hismm8690@gmail.com</p>
+                  <p className="text-base font-medium text-white group-hover:text-primary transition-colors">samrasdra@gmail.com</p>
                 </div>
               </a>
 
@@ -206,12 +206,15 @@ export default function Contact() {
                     </FormItem>
                   )}
                 />
-                <button
+                <motion.button
                   type="submit"
-                  className="relative overflow-hidden rounded-full bg-white text-black px-16 py-6 font-bold uppercase tracking-widest text-sm hover:bg-primary hover:text-white transition-colors duration-500 outline-none w-max"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative overflow-hidden rounded-full bg-gradient-to-r from-emerald-500/40 to-teal-500/40 border border-emerald-400/60 text-emerald-300 font-bold py-6 px-16 uppercase tracking-[0.15em] text-sm transition-all hover:from-emerald-500/60 hover:to-teal-500/60 cursor-none view-project shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/50"
                 >
-                  Send Message
-                </button>
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 via-emerald-300/30 to-emerald-400/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="relative z-10">Send Message</span>
+                </motion.button>
               </form>
             </Form>
           </div>

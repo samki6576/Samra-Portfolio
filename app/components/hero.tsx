@@ -90,36 +90,39 @@ export default function Hero() {
                 href="https://www.linkedin.com/in/samra-safdar-16833b30b"
                 target="_blank"
                 rel="noreferrer"
-                whileHover={{ y: -3, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-medium uppercase tracking-[0.25em] text-white/90 backdrop-blur-md transition-all hover:border-cyan-400/50 hover:bg-cyan-400/10"
+                whileHover={{ y: -4, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-3 text-sm font-medium uppercase tracking-[0.25em] text-cyan-400 backdrop-blur-xl transition-all hover:border-cyan-400/60 hover:bg-cyan-500/20 shadow-lg shadow-cyan-500/20 overflow-hidden"
               >
-                <Linkedin className="h-4 w-4" />
-                LinkedIn
-                <ArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-400/20 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Linkedin className="h-4 w-4 relative z-10" />
+                <span className="relative z-10">LinkedIn</span>
+                <ArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:translate-x-1 group-hover:-translate-y-1 relative z-10" />
               </motion.a>
 
               <motion.a
                 href="https://github.com/samki6576"
                 target="_blank"
                 rel="noreferrer"
-                whileHover={{ y: -3, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-medium uppercase tracking-[0.25em] text-white/90 backdrop-blur-md transition-all hover:border-violet-400/50 hover:bg-violet-400/10"
+                whileHover={{ y: -4, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-5 py-3 text-sm font-medium uppercase tracking-[0.25em] text-violet-400 backdrop-blur-xl transition-all hover:border-violet-400/60 hover:bg-violet-500/20 shadow-lg shadow-violet-500/20 overflow-hidden"
               >
-                <Github className="h-4 w-4" />
-                GitHub
-                <ArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/0 via-violet-400/20 to-violet-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Github className="h-4 w-4 relative z-10" />
+                <span className="relative z-10">GitHub</span>
+                <ArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:translate-x-1 group-hover:-translate-y-1 relative z-10" />
               </motion.a>
 
               <motion.a
-                href="mailto:hismm8690@gmail.com"
-                whileHover={{ y: -3, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-sm font-medium uppercase tracking-[0.25em] text-emerald-400 backdrop-blur-md transition-all hover:border-emerald-400/60 hover:bg-emerald-400/15"
+                href="mailto:samrasdra@gmail.com"
+                whileHover={{ y: -4, scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative flex items-center gap-2 rounded-full border-2 border-emerald-400 bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-emerald-300 backdrop-blur-xl transition-all hover:border-emerald-300 hover:from-emerald-500/40 hover:to-emerald-400/40 shadow-lg shadow-emerald-500/40 overflow-hidden"
               >
-                <Mail className="h-4 w-4" />
-                Hire Me
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 via-emerald-300/30 to-emerald-400/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Mail className="h-4 w-4 relative z-10" />
+                <span className="relative z-10">Hire Me</span>
               </motion.a>
             </div>
           </div>
