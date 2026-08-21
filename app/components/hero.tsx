@@ -12,7 +12,7 @@ const stats = [
 
 export default function Hero() {
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-[#050505] text-white">
+    <div className="relative min-h-screen w-full overflow-hidden bg-[#050505] text-white flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-24 pt-20">
 
       {/* Animated Mesh Gradient Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -34,7 +34,7 @@ export default function Hero() {
       </div>
 
       {/* Main content — vertically centered */}
-      <div className="relative z-10 flex h-full flex-col justify-center px-6 sm:px-12 md:px-24 pt-20">
+      <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8">
 
         {/* Open to Work badge */}
         <motion.div
@@ -64,7 +64,7 @@ export default function Hero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         >
-          <h1 className="text-[14vw] sm:text-[12vw] leading-[0.85] font-bold tracking-tighter uppercase font-sans text-white mix-blend-difference">
+          <h1 className="text-[20vw] sm:text-[14vw] md:text-[10vw] leading-[0.85] font-bold tracking-tighter uppercase font-sans text-white mix-blend-difference">
             Samra
             <br />
             Safdar<span className="text-primary/80">.</span>
@@ -76,16 +76,16 @@ export default function Hero() {
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex flex-col md:flex-row gap-8 md:gap-24"
+          className="mt-10 flex flex-col items-center gap-8 md:gap-24"
         >
           {/* Left */}
-          <div className="max-w-md">
+          <div className="max-w-md w-full text-center">
             <p className="text-lg sm:text-2xl font-light tracking-wide text-white/90 leading-snug">
               Full Stack Developer &amp; Cloud{" "}
               <br className="hidden sm:block" />AI Enthusiast
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3 justify-center">
               <motion.a
                 href="https://www.linkedin.com/in/samra-safdar-16833b30b"
                 target="_blank"
