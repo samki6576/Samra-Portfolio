@@ -4,10 +4,10 @@ import { motion } from "framer-motion"
 import { ArrowUpRight, Github, Linkedin, Mail, Briefcase } from "lucide-react"
 
 const stats = [
-  { value: "38+", label: "Public Repos" },
+  { value: "40+", label: "Public Repos" },
   { value: "8+", label: "Tech Stacks" },
   { value: "2024", label: "GitHub Since" },
-  { value: "100%", label: "Remote Ready" },
+  
 ]
 
 export default function Hero() {
