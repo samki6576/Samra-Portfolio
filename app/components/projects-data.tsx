@@ -12,7 +12,7 @@ export type Project = {
   status?: string
 }
 
-// Apps & tools — shown in the "Web Apps" section
+// Apps & tools  shown in the "Web Apps" section
 export const appWorks: Project[] = [
      {
   id: "codecatalyst",
@@ -49,7 +49,7 @@ export const appWorks: Project[] = [
     id: "breakfast-blitz",
     title: "Breakfast Blitz",
     description:
-      "Fast-paced browser arcade game where players sort and serve orders against the clock — built to practice game-loop logic and timed interactions.",
+      "Fast-paced browser arcade game where players sort and serve orders against the clock  built to practice game-loop logic and timed interactions.",
     tech: ["JavaScript", "Canvas API"],
     category: "Games",
     url: "https://breakfast-v8a1.vercel.app/",
@@ -104,7 +104,7 @@ export const appWorks: Project[] = [
     id: "remitx",
     title: "RemitX",
     description:
-      "Cross-border money transfer concept focused on a simple, transparent send flow — clear fees and status at every step.",
+      "Cross-border money transfer concept focused on a simple, transparent send flow  clear fees and status at every step.",
     tech: ["Next.js", "TypeScript"],
     category: "Apps",
     url: "https://remitx-six.vercel.app",
@@ -151,7 +151,7 @@ export const appWorks: Project[] = [
     id: "zizy-pdf",
     title: "Zizy PDF Maker",
     description:
-      "Browser-based tool for creating, merging, and exporting PDFs — no software installs, everything runs client-side.",
+      "Browser-based tool for creating, merging, and exporting PDFs  no software installs, everything runs client-side.",
     tech: ["Next.js", "PDF generation"],
     category: "Apps",
     url: "https://pdfmakerzizy.netlify.app",
@@ -195,7 +195,7 @@ export const appWorks: Project[] = [
   },
 ]
 
-// Websites — shown in the "Selected Works" section
+// Websites  shown in the "Selected Works" section
 export const selectedWorks: Project[] = [
   {
     id: "rate-my-last-text",
@@ -221,7 +221,7 @@ export const selectedWorks: Project[] = [
   },
   {
     id: "ecommerce-website",
-    title: "Elegance — Ecommerce Website",
+    title: "Elegance  Ecommerce Website",
     description:
       "Full storefront with product catalog, filtering, cart, and checkout flow for a fashion brand concept.",
     tech: ["Next.js", "Tailwind CSS"],
@@ -254,7 +254,7 @@ export const selectedWorks: Project[] = [
   },
   {
     id: "the-court",
-    title: "THE COURT — Shoe Store",
+    title: "THE COURT  Shoe Store",
     description:
       "Sneaker e-commerce storefront with product browsing, size selection, and cart flow.",
     tech: ["Next.js", "Tailwind CSS"],

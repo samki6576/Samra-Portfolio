@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     "Software Engineer Portfolio",
   ],
   openGraph: {
-    title: "Samra Safdar — Full Stack Developer & AI Engineer",
+    title: "Samra Safdar Full Stack Developer & AI Engineer",
     description:
       "Explore 15+ production-grade projects. Available for full-time, contract, and freelance roles globally.",
     type: "website",

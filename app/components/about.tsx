@@ -109,7 +109,7 @@ export default function About() {
           >
             <p className="text-xl text-white/70 leading-relaxed mb-8 font-light">
               I&apos;m a <span className="text-white font-medium">Full Stack Developer & AI Engineer</span> who builds
-              things that actually ship — from sleek e-commerce platforms and social networks to multi-agent AI systems
+              things that actually ship  from sleek e-commerce platforms and social networks to multi-agent AI systems
               that automate real workflows.
             </p>
             <p className="text-xl text-white/70 leading-relaxed font-light">
