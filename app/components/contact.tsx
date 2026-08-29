@@ -102,7 +102,7 @@ export default function Contact() {
             Available <br /><span className="text-white/30">for Hire.</span>
           </h2>
           <p className="text-xl text-white/50 font-light max-w-xl leading-relaxed">
-            Open to full-time positions, contract roles, and freelance projects. Whether you need a feature shipped fast or an AI system built from scratch — let&apos;s talk.
+            Open to full-time positions, contract roles, and freelance projects. Whether you need a feature shipped fast or an AI system built from scratch  let&apos;s talk.
           </p>
         </div>
 

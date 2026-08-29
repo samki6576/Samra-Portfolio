@@ -33,7 +33,7 @@ export default function Hero() {
         />
       </div>
 
-      {/* Main content — vertically centered */}
+      {/* Main content  vertically centered */}
       <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8">
 
         {/* Open to Work badge */}
