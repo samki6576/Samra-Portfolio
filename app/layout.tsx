@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Samra Safdar — Full Stack Developer & AI Engineer",
+  title: "Samra Safdar Full Stack Developer & AI Engineer",
   icons: {
     icon: [
       { url: "/logo.png", sizes: "32x32" },
