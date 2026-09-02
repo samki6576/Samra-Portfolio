@@ -24,14 +24,14 @@ export default function Nav() {
     }
   })
 
-  const scrollToSection = (index: number) => {
-    const sections = document.querySelectorAll("section, div[data-section]")
-    if (index === 0) {
+  const scrollToSection = (sectionId: string) => {
+    if (sectionId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" })
-    } else if (sections[index - 1]) {
-      sections[index - 1].scrollIntoView({ behavior: "smooth" })
-    } else {
-      window.scrollTo({ top: window.innerHeight * index, behavior: "smooth" })
+      return
+    }
+    const el = document.getElementById(sectionId)
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" })
     }
   }
 
@@ -60,32 +60,32 @@ export default function Nav() {
 
         <div className={`flex items-center gap-8 transition-all duration-700 ${isTop ? "mix-blend-difference" : ""}`}>
           <motion.button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative cursor-none view-project px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
+            onClick={() => scrollToSection("home")}
+            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
             whileHover={{ y: -2 }}
           >
             <span className="relative z-10">Home</span>
             <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
           </motion.button>
           <motion.button
-            onClick={() => scrollToSection(1)}
-            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative cursor-none view-project px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
+            onClick={() => scrollToSection("about")}
+            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
             whileHover={{ y: -2 }}
           >
             <span className="relative z-10">About</span>
             <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
           </motion.button>
           <motion.button
-            onClick={() => scrollToSection(2)}
-            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative cursor-none view-project px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
+            onClick={() => scrollToSection("work")}
+            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
             whileHover={{ y: -2 }}
           >
             <span className="relative z-10">Work</span>
             <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
           </motion.button>
           <motion.button
-            onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
-            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative cursor-none view-project px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
+            onClick={() => scrollToSection("contact")}
+            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
             whileHover={{ y: -2 }}
           >
             <span className="relative z-10">Contact</span>
@@ -95,7 +95,7 @@ export default function Nav() {
             href="mailto:samrasdra@gmail.com"
             whileHover={{ scale: 1.08, y: -3 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500/40 to-emerald-400/40 border border-emerald-400/60 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300 hover:from-emerald-500/60 hover:to-emerald-400/60 hover:border-emerald-300 transition-all cursor-none view-project shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 overflow-hidden"
+            className="group relative flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500/40 to-emerald-400/40 border border-emerald-400/60 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300 hover:from-emerald-500/60 hover:to-emerald-400/60 hover:border-emerald-300 transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 via-emerald-300/20 to-emerald-400/0 opacity-0 group-hover:opacity-100 transition-opacity" />
             <FileText className="h-3.5 w-3.5 relative z-10" />

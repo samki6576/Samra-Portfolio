@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Right: availability pill */}
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-2 rounded-full border border-emerald-400/60 bg-emerald-500/20 px-5 py-2.5 hover:bg-emerald-500/30 transition-all shadow-lg shadow-emerald-500/20 cursor-none view-project"
+            className="flex items-center gap-2 rounded-full border border-emerald-400/60 bg-emerald-500/20 px-5 py-2.5 hover:bg-emerald-500/30 transition-all shadow-lg shadow-emerald-500/20"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -48,7 +48,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/samra-safdar-16833b30b/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-white/60 hover:text-cyan-400 transition-colors text-xs font-bold uppercase tracking-widest cursor-none view-project px-4 py-2 rounded-full hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/30"
+              className="group flex items-center gap-2 text-white/60 hover:text-cyan-400 transition-colors text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/30"
               whileHover={{ scale: 1.1, y: -3 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -59,7 +59,7 @@ export default function Footer() {
               href="https://github.com/samki6576"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-white/60 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest cursor-none view-project px-4 py-2 rounded-full hover:bg-primary/10 border border-transparent hover:border-primary/30"
+              className="group flex items-center gap-2 text-white/60 hover:text-primary transition-colors text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full hover:bg-primary/10 border border-transparent hover:border-primary/30"
               whileHover={{ scale: 1.1, y: -3 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -68,7 +68,7 @@ export default function Footer() {
             </motion.a>
             <motion.a
               href="mailto:samrasdra@gmail.com"
-              className="group flex items-center gap-2 text-white/60 hover:text-emerald-400 transition-colors text-xs font-bold uppercase tracking-widest cursor-none view-project px-4 py-2 rounded-full hover:bg-emerald-500/10 border border-transparent hover:border-emerald-500/30"
+              className="group flex items-center gap-2 text-white/60 hover:text-emerald-400 transition-colors text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full hover:bg-emerald-500/10 border border-transparent hover:border-emerald-500/30"
               whileHover={{ scale: 1.1, y: -3 }}
               whileTap={{ scale: 0.95 }}
             >

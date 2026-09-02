@@ -74,7 +74,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-[#050505] pt-32 pb-48">
+    <section id="contact" className="relative overflow-hidden bg-[#050505] pt-32 pb-48">
       {/* Marquee Header */}
       <div className="relative w-full overflow-hidden flex whitespace-nowrap border-y border-white/10 py-6 mb-24">
         <motion.div
@@ -157,7 +157,7 @@ export default function Contact() {
 
           <div className="md:col-span-7">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-16">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
                 <FormField
                   control={form.control}
                   name="name"
@@ -167,10 +167,10 @@ export default function Contact() {
                         <input
                           placeholder="What's your name?"
                           {...field}
-                          className="w-full bg-transparent border-0 border-b border-white/20 text-3xl md:text-4xl font-light text-white placeholder:text-white/20 focus:ring-0 focus:border-white focus:outline-none transition-colors pb-4 rounded-none"
+                          className="w-full bg-transparent border-0 border-b border-white/20 text-2xl md:text-3xl font-light text-white placeholder:text-white/20 focus:ring-0 focus:border-emerald-400 focus:outline-none transition-colors pb-3 rounded-none"
                         />
                       </FormControl>
-                      <FormMessage className="text-red-400 text-sm mt-2 font-mono uppercase tracking-widest" />
+                      <FormMessage className="text-red-400 text-xs mt-2 font-mono uppercase tracking-widest" />
                     </FormItem>
                   )}
                 />
@@ -183,10 +183,10 @@ export default function Contact() {
                         <input
                           placeholder="Your email address?"
                           {...field}
-                          className="w-full bg-transparent border-0 border-b border-white/20 text-3xl md:text-4xl font-light text-white placeholder:text-white/20 focus:ring-0 focus:border-white focus:outline-none transition-colors pb-4 rounded-none"
+                          className="w-full bg-transparent border-0 border-b border-white/20 text-2xl md:text-3xl font-light text-white placeholder:text-white/20 focus:ring-0 focus:border-emerald-400 focus:outline-none transition-colors pb-3 rounded-none"
                         />
                       </FormControl>
-                      <FormMessage className="text-red-400 text-sm mt-2 font-mono uppercase tracking-widest" />
+                      <FormMessage className="text-red-400 text-xs mt-2 font-mono uppercase tracking-widest" />
                     </FormItem>
                   )}
                 />
@@ -198,11 +198,11 @@ export default function Contact() {
                       <FormControl>
                         <textarea
                           placeholder="Tell me about the role or project."
-                          className="w-full bg-transparent border-0 border-b border-white/20 text-3xl md:text-4xl font-light text-white placeholder:text-white/20 focus:ring-0 focus:border-white focus:outline-none transition-colors pb-4 rounded-none min-h-[150px] resize-none"
+                          className="w-full bg-transparent border-0 border-b border-white/20 text-2xl md:text-3xl font-light text-white placeholder:text-white/20 focus:ring-0 focus:border-emerald-400 focus:outline-none transition-colors pb-3 rounded-none min-h-[120px] resize-none"
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage className="text-red-400 text-sm mt-2 font-mono uppercase tracking-widest" />
+                      <FormMessage className="text-red-400 text-xs mt-2 font-mono uppercase tracking-widest" />
                     </FormItem>
                   )}
                 />
@@ -210,7 +210,7 @@ export default function Contact() {
                   type="submit"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative overflow-hidden rounded-full bg-gradient-to-r from-emerald-500/40 to-teal-500/40 border border-emerald-400/60 text-emerald-300 font-bold py-6 px-16 uppercase tracking-[0.15em] text-sm transition-all hover:from-emerald-500/60 hover:to-teal-500/60 cursor-none view-project shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/50"
+                  className="group relative overflow-hidden rounded-full bg-gradient-to-r from-emerald-500/40 to-teal-500/40 border border-emerald-400/60 text-emerald-300 font-bold py-4.5 px-12 uppercase tracking-[0.15em] text-xs transition-all hover:from-emerald-500/60 hover:to-teal-500/60 shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/50"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 via-emerald-300/30 to-emerald-400/0 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <span className="relative z-10">Send Message</span>

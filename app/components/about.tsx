@@ -70,7 +70,7 @@ export default function About() {
   const inView = useInView(sectionRef, { once: true, margin: "-100px" })
 
   return (
-    <section ref={sectionRef} className="relative bg-[#070710] py-32 overflow-hidden">
+    <section id="about" ref={sectionRef} className="relative bg-[#070710] py-32 overflow-hidden">
       {/* Subtle grid background */}
       <div
         className="absolute inset-0 opacity-[0.03]"
