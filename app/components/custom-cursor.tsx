@@ -48,29 +48,22 @@ export default function CustomCursor() {
     window.addEventListener("mousemove", updateMousePosition)
     window.addEventListener("mouseover", handleMouseOver)
 
-    document.body.style.cursor = 'none'
-    const style = document.createElement('style')
-    style.innerHTML = `* { cursor: none !important; }`
-    document.head.appendChild(style)
-
     return () => {
       window.removeEventListener("mousemove", updateMousePosition)
       window.removeEventListener("mouseover", handleMouseOver)
-      document.body.style.cursor = 'auto'
-      if(document.head.contains(style)) document.head.removeChild(style)
     }
   }, [])
 
   if (!isVisible) return null
 
-  let size = 16
-  if (isHovering) size = 48
-  if (isViewProject) size = 100
+  let size = 8
+  if (isHovering) size = 32
+  if (isViewProject) size = 48
 
   return (
     <>
       <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[100] mix-blend-difference hidden md:flex items-center justify-center rounded-full bg-white text-black font-bold tracking-widest text-xs overflow-hidden"
+        className="pointer-events-none fixed top-0 left-0 z-[100] hidden md:flex items-center justify-center rounded-full bg-violet-400/30 border border-violet-400/50 backdrop-blur-[1px] shadow-lg shadow-violet-500/20"
         animate={{
           x: mousePosition.x - size / 2,
           y: mousePosition.y - size / 2,
@@ -78,21 +71,8 @@ export default function CustomCursor() {
           height: size,
           opacity: 1,
         }}
-        transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.5 }}
-      >
-        <AnimatePresence>
-          {isViewProject && (
-            <motion.span
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              className="absolute"
-            >
-              VIEW
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </motion.div>
+        transition={{ type: "spring", stiffness: 500, damping: 32, mass: 0.2 }}
+      />
     </>
   )
 }

@@ -12,7 +12,7 @@ const stats = [
 
 export default function Hero() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-[#050505] text-white flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-24 pt-20">
+    <div id="home" className="relative min-h-screen w-full overflow-hidden bg-[#050505] text-white flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-24 pt-20">
 
       {/* Animated Mesh Gradient Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
