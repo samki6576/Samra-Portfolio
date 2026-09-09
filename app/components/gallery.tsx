@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef } from "react"
+import { motion } from "framer-motion"
 import { ArrowUpRight, Github, ChevronLeft, ChevronRight } from "lucide-react"
 import { selectedWorks } from "./projects-data"
 
@@ -34,37 +35,43 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Scroll navigation arrows */}
+        {/* Scroll navigation arrows with spring physics */}
         <div className="flex items-center gap-2">
-          <button
+          <motion.button
             onClick={() => handleScroll("left")}
-            className="p-2.5 rounded bg-[#ffffff] hover:bg-[#faf8f3] border border-[#e6e0d4] text-[#141413] transition-all hover:border-[#141413] shadow-sm"
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.94 }}
+            className="p-2.5 rounded bg-[#ffffff] hover:bg-[#faf8f3] border border-[#e6e0d4] text-[#141413] transition-colors hover:border-[#141413] shadow-sm"
             title="Scroll Left"
             aria-label="Scroll Left"
           >
             <ChevronLeft className="w-4 h-4" />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             onClick={() => handleScroll("right")}
-            className="p-2.5 rounded bg-[#ffffff] hover:bg-[#faf8f3] border border-[#e6e0d4] text-[#141413] transition-all hover:border-[#141413] shadow-sm"
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.94 }}
+            className="p-2.5 rounded bg-[#ffffff] hover:bg-[#faf8f3] border border-[#e6e0d4] text-[#141413] transition-colors hover:border-[#141413] shadow-sm"
             title="Scroll Right"
             aria-label="Scroll Right"
           >
             <ChevronRight className="w-4 h-4" />
-          </button>
+          </motion.button>
         </div>
       </div>
 
-      {/* Horizontal Scrollable Container */}
+      {/* Horizontal Scrollable Container with Tactile Lift */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-6 overflow-x-auto custom-scrollbar px-6 sm:px-10 pb-8 pt-2 scroll-smooth snap-x snap-mandatory"
+        className="flex gap-6 overflow-x-auto custom-scrollbar px-6 sm:px-10 pb-10 pt-2 scroll-smooth snap-x snap-mandatory"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
         {selectedWorks.map((work, index) => (
-          <div
+          <motion.div
             key={work.id}
-            className="group relative flex flex-col w-[85vw] sm:w-[380px] md:w-[420px] rounded bg-[#ffffff] border border-[#e6e0d4] hover:border-[#141413] transition-all duration-300 snap-start shrink-0 shadow-sm hover:shadow-md"
+            whileHover={{ y: -6 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="group relative flex flex-col w-[85vw] sm:w-[380px] md:w-[420px] rounded bg-[#ffffff] border border-[#e6e0d4] hover:border-[#141413] transition-all duration-300 snap-start shrink-0 shadow-sm hover:shadow-[0_16px_32px_-8px_rgba(28,25,23,0.12)]"
           >
             {/* Image Preview */}
             <a
@@ -76,7 +83,7 @@ export default function Gallery() {
               <img
                 src={work.image || "/placeholder.svg"}
                 alt={work.title}
-                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                 onError={(e) => {
                   e.currentTarget.src = "/placeholder.svg"
                 }}
@@ -84,17 +91,17 @@ export default function Gallery() {
 
               {/* Index + Category badge */}
               <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-20">
-                <span className="text-xs font-bold font-mono text-[#141413] bg-[#ffffff]/90 backdrop-blur-sm px-2.5 py-1 rounded border border-[#e6e0d4]">
+                <span className="text-xs font-bold font-mono text-[#141413] bg-[#ffffff]/92 backdrop-blur-sm px-2.5 py-1 rounded border border-[#e6e0d4] shadow-sm">
                   0{index + 1}
                 </span>
                 <div className="flex items-center gap-1.5">
                   {work.status === "live" && (
-                    <span className="flex items-center gap-1 text-[10px] font-mono font-bold tracking-wider text-white uppercase bg-emerald-700 px-2 py-0.5 rounded">
+                    <span className="flex items-center gap-1 text-[10px] font-mono font-bold tracking-wider text-white uppercase bg-emerald-700 px-2 py-0.5 rounded shadow-sm">
                       <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                       Live
                     </span>
                   )}
-                  <span className="text-[10px] font-mono font-semibold tracking-wider text-[#44403c] uppercase bg-[#ffffff]/90 backdrop-blur-sm px-2.5 py-0.5 rounded border border-[#e6e0d4]">
+                  <span className="text-[10px] font-mono font-semibold tracking-wider text-[#44403c] uppercase bg-[#ffffff]/92 backdrop-blur-sm px-2.5 py-0.5 rounded border border-[#e6e0d4] shadow-sm">
                     {work.category}
                   </span>
                 </div>
@@ -106,7 +113,7 @@ export default function Gallery() {
               <div>
                 <div className="flex items-start justify-between gap-3">
                   <a href={work.url} target="_blank" rel="noopener noreferrer">
-                    <h3 className="text-lg sm:text-xl font-bold uppercase tracking-tight text-[#141413] hover:text-[#c2410c] transition-colors font-mono">
+                    <h3 className="text-lg sm:text-xl font-bold uppercase tracking-tight text-[#141413] group-hover:text-[#c2410c] transition-colors font-mono">
                       {work.title}
                     </h3>
                   </a>
@@ -128,7 +135,7 @@ export default function Gallery() {
                       rel="noopener noreferrer"
                       className="p-1.5 rounded text-[#78716c] hover:text-[#c2410c] hover:bg-[#f7f5ef] transition-colors"
                     >
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </a>
                   </div>
                 </div>
@@ -143,7 +150,7 @@ export default function Gallery() {
                   {work.tech.map((t) => (
                     <span
                       key={t}
-                      className="text-[10px] font-mono uppercase tracking-wider text-[#57534e] bg-[#f7f5ef] border border-[#e6e0d4] rounded px-2 py-0.5"
+                      className="text-[10px] font-mono uppercase tracking-wider text-[#57534e] bg-[#f7f5ef] border border-[#e6e0d4] rounded px-2 py-0.5 transition-colors group-hover:border-[#d4ccbe]"
                     >
                       {t}
                     </span>
@@ -151,7 +158,7 @@ export default function Gallery() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
 
         {/* End Spacer */}
@@ -159,8 +166,8 @@ export default function Gallery() {
       </div>
 
       {/* Helper cue */}
-      <div className="px-6 sm:px-10 max-w-7xl mx-auto flex items-center justify-between text-xs font-mono text-[#78716c] pt-2">
-        <span>← Scroll horizontally or use arrows to view all selected works →</span>
+      <div className="px-6 sm:px-10 max-w-7xl mx-auto flex items-center justify-between text-xs font-mono text-[#78716c]">
+        <span>← Scroll horizontally or use arrows to inspect all selected works →</span>
       </div>
     </section>
   )

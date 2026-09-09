@@ -58,7 +58,13 @@ export default function About() {
     <section id="about" className="py-24 border-b border-[#e6e0d4] bg-[#f7f5ef]">
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 mb-12 border-b border-[#e6e0d4]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 mb-12 border-b border-[#e6e0d4]"
+        >
           <div>
             <div className="flex items-center gap-2 mb-2 text-xs font-mono text-[#78716c] uppercase tracking-widest">
               <span className="w-2 h-2 rounded-sm bg-[#c2410c]" />
@@ -71,21 +77,26 @@ export default function About() {
           <p className="text-sm text-[#57534e] max-w-md font-normal leading-relaxed">
             The architectural principles and technical proficiencies underpinning every production deployment.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 4 Architectural Pillars */}
+        {/* 4 Architectural Pillars with Staggered Fade & Hover Lift */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {engineeringPillars.map((pillar) => (
-            <div
+          {engineeringPillars.map((pillar, idx) => (
+            <motion.div
               key={pillar.title}
-              className="bg-[#ffffff] border border-[#e6e0d4] rounded p-6 sm:p-8 shadow-sm flex flex-col justify-between"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              className="bg-[#ffffff] border border-[#e6e0d4] hover:border-[#141413] rounded p-6 sm:p-8 shadow-sm hover:shadow-[0_16px_32px_-8px_rgba(28,25,23,0.1)] transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#e6e0d4] text-[11px] font-mono text-[#78716c]">
                   <span>{pillar.category}</span>
-                  <pillar.icon className="w-4 h-4 text-[#c2410c]" />
+                  <pillar.icon className="w-4 h-4 text-[#c2410c] group-hover:scale-110 transition-transform" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold uppercase tracking-tight text-[#141413] mb-3">
+                <h3 className="text-lg sm:text-xl font-bold uppercase tracking-tight text-[#141413] group-hover:text-[#c2410c] transition-colors mb-3">
                   {pillar.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed mb-6 font-normal">
@@ -98,26 +109,33 @@ export default function About() {
                   {pillar.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="bg-[#f7f5ef] border border-[#e6e0d4] text-[#44403c] text-[10px] font-mono px-2 py-0.5 rounded"
+                      className="bg-[#f7f5ef] border border-[#e6e0d4] text-[#44403c] text-[10px] font-mono px-2 py-0.5 rounded transition-colors group-hover:border-[#d4ccbe]"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Operational Engagement Ledger */}
-        <div className="bg-[#ffffff] border border-[#e6e0d4] rounded p-6 sm:p-8 shadow-sm mb-16">
-          <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#e6e0d4]">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-[#ffffff] border border-[#e6e0d4] rounded p-6 sm:p-8 shadow-sm mb-16"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-6 border-b border-[#e6e0d4]">
             <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[#141413]">
               <Terminal className="w-4 h-4 text-[#c2410c]" />
               <span>Operational Engagement Parameters</span>
             </div>
-            <span className="text-[11px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-              ● READY FOR IMMEDIATE ONBOARDING
+            <span className="text-[11px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+              READY FOR IMMEDIATE ONBOARDING
             </span>
           </div>
 
@@ -139,18 +157,25 @@ export default function About() {
               <p className="font-semibold text-[#141413]">Immediate Availability</p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Complete Technical Matrix */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6 }}
+        >
           <h3 className="font-mono text-xs uppercase tracking-widest text-[#78716c] mb-6 font-bold">
             Comprehensive Skill &amp; Technology Index
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {technicalSkills.map((group) => (
-              <div
+            {technicalSkills.map((group, gi) => (
+              <motion.div
                 key={group.domain}
-                className="bg-[#ffffff] border border-[#e6e0d4] rounded p-5 shadow-sm"
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2 }}
+                className="bg-[#ffffff] border border-[#e6e0d4] hover:border-[#141413] rounded p-5 shadow-sm transition-colors"
               >
                 <h4 className="font-mono text-xs uppercase tracking-wider font-bold text-[#141413] pb-2 mb-3 border-b border-[#e6e0d4]">
                   {group.domain}
@@ -163,10 +188,10 @@ export default function About() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

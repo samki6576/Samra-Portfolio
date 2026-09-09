@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { ArrowUpRight, Github, TrendingUp, ChevronLeft, ChevronRight } from "lucide-react"
 import { appWorks } from "./projects-data"
 
@@ -42,161 +42,181 @@ export default function Portfolio() {
           </p>
         </div>
 
-        {/* Controls: Filter Pills + Scroll Buttons */}
+        {/* Controls: Animated Filter Tabs + Scroll Buttons */}
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-1.5 bg-[#ede6d9]/70 p-1 rounded border border-[#e6e0d4]">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded text-xs font-mono uppercase tracking-wider transition-all ${
-                  selectedCategory === cat
-                    ? "bg-[#ffffff] text-[#141413] font-bold shadow-sm"
-                    : "text-[#57534e] hover:text-[#141413]"
-                }`}
-              >
-                {cat === "all" ? "All" : cat}
-              </button>
-            ))}
+          <div className="relative flex items-center gap-1 bg-[#ede6d9]/80 p-1 rounded border border-[#e6e0d4]">
+            {categories.map((cat) => {
+              const isSelected = selectedCategory === cat
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`relative px-3.5 py-1.5 rounded text-xs font-mono uppercase tracking-wider transition-colors z-10 ${
+                    isSelected ? "text-[#141413] font-bold" : "text-[#57534e] hover:text-[#141413]"
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="activeCategoryPill"
+                      className="absolute inset-0 bg-[#ffffff] rounded shadow-sm -z-10"
+                      transition={{ type: "spring", stiffness: 450, damping: 32 }}
+                    />
+                  )}
+                  <span>{cat === "all" ? "All" : cat}</span>
+                </button>
+              )
+            })}
           </div>
 
           <div className="flex items-center gap-1.5">
-            <button
+            <motion.button
               onClick={() => handleScroll("left")}
-              className="p-2.5 rounded bg-[#ffffff] hover:bg-[#faf8f3] border border-[#e6e0d4] text-[#141413] transition-all hover:border-[#141413] shadow-sm"
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.94 }}
+              className="p-2.5 rounded bg-[#ffffff] hover:bg-[#faf8f3] border border-[#e6e0d4] text-[#141413] transition-colors hover:border-[#141413] shadow-sm"
               title="Scroll Left"
               aria-label="Scroll Left"
             >
               <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => handleScroll("right")}
-              className="p-2.5 rounded bg-[#ffffff] hover:bg-[#faf8f3] border border-[#e6e0d4] text-[#141413] transition-all hover:border-[#141413] shadow-sm"
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.94 }}
+              className="p-2.5 rounded bg-[#ffffff] hover:bg-[#faf8f3] border border-[#e6e0d4] text-[#141413] transition-colors hover:border-[#141413] shadow-sm"
               title="Scroll Right"
               aria-label="Scroll Right"
             >
               <ChevronRight className="w-4 h-4" />
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
 
-      {/* Manual Scrollable Track */}
+      {/* Manual Scrollable Track with Tactile Lift */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-6 overflow-x-auto custom-scrollbar px-6 sm:px-10 pb-8 pt-2 scroll-smooth snap-x snap-mandatory"
+        className="flex gap-6 overflow-x-auto custom-scrollbar px-6 sm:px-10 pb-10 pt-2 scroll-smooth snap-x snap-mandatory"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
-        {filteredWorks.map((work) => (
-          <div
-            key={work.id}
-            className="group relative flex flex-col w-[85vw] sm:w-[380px] md:w-[420px] rounded bg-[#ffffff] border border-[#e6e0d4] hover:border-[#141413] transition-all duration-300 snap-start shrink-0 shadow-sm hover:shadow-md"
-          >
-            {/* Image Preview Banner */}
-            <a
-              href={work.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative w-full aspect-[16/10] overflow-hidden bg-[#f0ebe0] block border-b border-[#e6e0d4]"
+        <AnimatePresence mode="popLayout">
+          {filteredWorks.map((work) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6 }}
+              key={work.id}
+              className="group relative flex flex-col w-[85vw] sm:w-[380px] md:w-[420px] rounded bg-[#ffffff] border border-[#e6e0d4] hover:border-[#141413] transition-all duration-300 snap-start shrink-0 shadow-sm hover:shadow-[0_16px_32px_-8px_rgba(28,25,23,0.12)]"
             >
-              <img
-                src={work.image || "/placeholder.svg"}
-                alt={work.title}
-                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                onError={(e) => {
-                  e.currentTarget.src = "/placeholder.svg"
-                }}
-              />
+              {/* Image Preview Banner */}
+              <a
+                href={work.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative w-full aspect-[16/10] overflow-hidden bg-[#f0ebe0] block border-b border-[#e6e0d4]"
+              >
+                <img
+                  src={work.image || "/placeholder.svg"}
+                  alt={work.title}
+                  className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                  onError={(e) => {
+                    e.currentTarget.src = "/placeholder.svg"
+                  }}
+                />
 
-              {/* Badges row */}
-              <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-20">
-                <span className="text-[11px] font-mono font-bold tracking-wider text-[#141413] uppercase bg-[#ffffff]/90 backdrop-blur-sm px-2.5 py-1 rounded border border-[#e6e0d4]">
-                  {work.year}
-                </span>
-                <div className="flex items-center gap-1.5">
-                  {work.status === "live" && (
-                    <span className="flex items-center gap-1 text-[10px] font-mono font-bold tracking-wider text-white uppercase bg-emerald-700 px-2 py-0.5 rounded">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                      Live
-                    </span>
-                  )}
-                  <span className="text-[10px] font-mono font-semibold tracking-wider text-[#44403c] uppercase bg-[#ffffff]/90 backdrop-blur-sm px-2.5 py-0.5 rounded border border-[#e6e0d4]">
-                    {work.category}
+                {/* Badges row */}
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-20">
+                  <span className="text-[11px] font-mono font-bold tracking-wider text-[#141413] uppercase bg-[#ffffff]/92 backdrop-blur-sm px-2.5 py-1 rounded border border-[#e6e0d4] shadow-sm">
+                    {work.year}
                   </span>
-                </div>
-              </div>
-
-              {/* Impact overlay on hover */}
-              {work.impact && (
-                <div className="absolute inset-x-0 bottom-0 bg-[#ffffff]/95 backdrop-blur-sm border-t border-[#e6e0d4] p-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <div className="flex items-start gap-2">
-                    <TrendingUp className="h-3.5 w-3.5 text-[#c2410c] shrink-0 mt-0.5" />
-                    <p className="text-xs text-[#141413] leading-relaxed font-mono">{work.impact}</p>
+                  <div className="flex items-center gap-1.5">
+                    {work.status === "live" && (
+                      <span className="flex items-center gap-1 text-[10px] font-mono font-bold tracking-wider text-white uppercase bg-emerald-700 px-2 py-0.5 rounded shadow-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                        Live
+                      </span>
+                    )}
+                    <span className="text-[10px] font-mono font-semibold tracking-wider text-[#44403c] uppercase bg-[#ffffff]/92 backdrop-blur-sm px-2.5 py-0.5 rounded border border-[#e6e0d4] shadow-sm">
+                      {work.category}
+                    </span>
                   </div>
                 </div>
-              )}
-            </a>
 
-            {/* Info block */}
-            <div className="flex flex-col flex-1 p-5 sm:p-6 justify-between">
-              <div>
-                <div className="flex items-start justify-between gap-3">
-                  <a href={work.url} target="_blank" rel="noopener noreferrer">
-                    <h3 className="text-lg sm:text-xl font-bold uppercase tracking-tight text-[#141413] hover:text-[#c2410c] transition-colors font-mono">
-                      {work.title}
-                    </h3>
-                  </a>
-                  <div className="flex items-center gap-1 shrink-0 mt-0.5">
-                    {work.github && (
+                {/* Impact overlay on hover */}
+                {work.impact && (
+                  <div className="absolute inset-x-0 bottom-0 bg-[#ffffff]/95 backdrop-blur-sm border-t border-[#e6e0d4] p-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <div className="flex items-start gap-2">
+                      <TrendingUp className="h-3.5 w-3.5 text-[#c2410c] shrink-0 mt-0.5" />
+                      <p className="text-xs text-[#141413] leading-relaxed font-mono">{work.impact}</p>
+                    </div>
+                  </div>
+                )}
+              </a>
+
+              {/* Info block */}
+              <div className="flex flex-col flex-1 p-5 sm:p-6 justify-between">
+                <div>
+                  <div className="flex items-start justify-between gap-3">
+                    <a href={work.url} target="_blank" rel="noopener noreferrer">
+                      <h3 className="text-lg sm:text-xl font-bold uppercase tracking-tight text-[#141413] group-hover:text-[#c2410c] transition-colors font-mono">
+                        {work.title}
+                      </h3>
+                    </a>
+                    <div className="flex items-center gap-1 shrink-0 mt-0.5">
+                      {work.github && (
+                        <a
+                          href={work.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-1.5 rounded text-[#78716c] hover:text-[#141413] hover:bg-[#f7f5ef] transition-colors"
+                          title="View source on GitHub"
+                        >
+                          <Github className="w-4 h-4" />
+                        </a>
+                      )}
                       <a
-                        href={work.github}
+                        href={work.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-1.5 rounded text-[#78716c] hover:text-[#141413] hover:bg-[#f7f5ef] transition-colors"
-                        title="View source on GitHub"
+                        className="p-1.5 rounded text-[#78716c] hover:text-[#c2410c] hover:bg-[#f7f5ef] transition-colors"
                       >
-                        <Github className="w-4 h-4" />
+                        <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </a>
-                    )}
-                    <a
-                      href={work.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 rounded text-[#78716c] hover:text-[#c2410c] hover:bg-[#f7f5ef] transition-colors"
-                    >
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </a>
+                    </div>
+                  </div>
+
+                  <p className="mt-3 text-xs sm:text-sm text-[#57534e] leading-relaxed line-clamp-3 font-normal">
+                    {work.description}
+                  </p>
+                </div>
+
+                <div className="mt-5 pt-4 border-t border-[#e6e0d4]">
+                  <div className="flex flex-wrap gap-1.5">
+                    {work.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="text-[10px] font-mono uppercase tracking-wider text-[#57534e] bg-[#f7f5ef] border border-[#e6e0d4] rounded px-2 py-0.5 transition-colors group-hover:border-[#d4ccbe]"
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
-
-                <p className="mt-3 text-xs sm:text-sm text-[#57534e] leading-relaxed line-clamp-3 font-normal">
-                  {work.description}
-                </p>
               </div>
-
-              <div className="mt-5 pt-4 border-t border-[#e6e0d4]">
-                <div className="flex flex-wrap gap-1.5">
-                  {work.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[10px] font-mono uppercase tracking-wider text-[#57534e] bg-[#f7f5ef] border border-[#e6e0d4] rounded px-2 py-0.5"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+            </motion.div>
+          ))}
+        </AnimatePresence>
 
         {/* End Spacer */}
         <div className="min-w-[4vw] shrink-0" />
       </div>
 
       {/* Helper cue */}
-      <div className="px-6 sm:px-10 max-w-7xl mx-auto flex items-center justify-between text-xs font-mono text-[#78716c] pt-2">
-        <span>← Scroll horizontally or use arrows to view all systems →</span>
+      <div className="px-6 sm:px-10 max-w-7xl mx-auto flex items-center justify-between text-xs font-mono text-[#78716c]">
+        <span>← Scroll horizontally or use arrows to inspect all projects →</span>
       </div>
     </section>
   )

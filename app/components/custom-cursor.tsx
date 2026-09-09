@@ -37,16 +37,33 @@ export default function CustomCursor() {
   if (!isVisible) return null
 
   return (
-    <motion.div
-      className="pointer-events-none fixed top-0 left-0 z-[100] hidden md:block rounded-full border border-[#141413]/40 bg-[#141413]/5 backdrop-blur-[0.5px]"
-      animate={{
-        x: mousePosition.x - (isPointer ? 16 : 6),
-        y: mousePosition.y - (isPointer ? 16 : 6),
-        width: isPointer ? 32 : 12,
-        height: isPointer ? 32 : 12,
-        borderColor: isPointer ? "rgba(194, 65, 12, 0.6)" : "rgba(20, 20, 19, 0.3)",
-      }}
-      transition={{ type: "spring", stiffness: 600, damping: 35, mass: 0.1 }}
-    />
+    <>
+      {/* Center ink pinpoint */}
+      <motion.div
+        className="pointer-events-none fixed top-0 left-0 z-[100] hidden md:block rounded-full bg-[#141413]"
+        animate={{
+          x: mousePosition.x - 2,
+          y: mousePosition.y - 2,
+          width: 4,
+          height: 4,
+          backgroundColor: isPointer ? "#c2410c" : "#141413",
+        }}
+        transition={{ type: "spring", stiffness: 1200, damping: 50, mass: 0.05 }}
+      />
+
+      {/* Outer drafting ring */}
+      <motion.div
+        className="pointer-events-none fixed top-0 left-0 z-[99] hidden md:block rounded-full border border-[#141413]/30"
+        animate={{
+          x: mousePosition.x - (isPointer ? 18 : 12),
+          y: mousePosition.y - (isPointer ? 18 : 12),
+          width: isPointer ? 36 : 24,
+          height: isPointer ? 36 : 24,
+          borderColor: isPointer ? "rgba(194, 65, 12, 0.6)" : "rgba(20, 20, 19, 0.25)",
+          backgroundColor: isPointer ? "rgba(194, 65, 12, 0.05)" : "transparent",
+        }}
+        transition={{ type: "spring", stiffness: 450, damping: 30, mass: 0.15 }}
+      />
+    </>
   )
 }
