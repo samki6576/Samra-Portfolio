@@ -1,166 +1,293 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { ArrowUpRight, Github, Linkedin, Mail, Briefcase } from "lucide-react"
+import { useEffect, useState, useRef } from "react"
+import { motion, useInView } from "framer-motion"
+import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, Terminal, Sparkles } from "lucide-react"
+
+function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true })
+
+  useEffect(() => {
+    if (!inView) return
+    let start = 0
+    const duration = 1400
+    const stepTime = 16
+    const totalSteps = duration / stepTime
+    const increment = target / totalSteps
+    const timer = setInterval(() => {
+      start += increment
+      if (start >= target) {
+        setCount(target)
+        clearInterval(timer)
+      } else {
+        setCount(Math.floor(start))
+      }
+    }, stepTime)
+    return () => clearInterval(timer)
+  }, [inView, target])
+
+  return <span ref={ref}>{count}{suffix}</span>
+}
 
 const stats = [
-  { value: "40+", label: "Public Repos" },
-  { value: "8+", label: "Tech Stacks" },
-  { value: "2024", label: "GitHub Since" },
-  
+  { target: 15, suffix: "+", label: "Production Deployments", desc: "Live apps & tools with active users" },
+  { isText: true, text: "LangGraph", label: "Multi-Agent AI", desc: "Autonomous migration & RAG pipelines" },
+  { isText: true, text: "Full-Stack", label: "Backend to Interface", desc: "FastAPI, Kafka, Next.js, Node.js" },
+  { isText: true, text: "Immediate", label: "Availability", desc: "Remote worldwide · UTC+5 flexible" },
+]
+
+const stackPills = [
+  "Python / FastAPI",
+  "LangGraph & Groq",
+  "Next.js 16 & React 19",
+  "TypeScript",
+  "Apache Kafka",
+  "Docker",
+  "ChromaDB (RAG)",
+  "Tailwind CSS",
+  "PostgreSQL / MongoDB",
+]
+
+const tickerItems = [
+  "LANGGRAPH MULTI-AGENT SYSTEMS",
+  "APACHE KAFKA TELEMETRY",
+  "FASTAPI REST & STREAMING",
+  "NEXT.JS 16 APP ROUTER",
+  "CHROMADB VECTOR SEARCH",
+  "DOCKER REPRODUCIBLE BUILDS",
+  "TIMESCALE TIME-SERIES",
+  "WEBSOCKET REAL-TIME FEEDS",
 ]
 
 export default function Hero() {
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
-    <div id="home" className="relative min-h-screen w-full overflow-hidden bg-[#050505] text-white flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 lg:px-24 pt-20">
+    <section id="home" className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden border-b border-[#e6e0d4]">
+      {/* Editorial Watermark Background */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute top-12 right-6 md:right-16 text-[18vw] font-mono font-bold text-[#141413]/[0.03] select-none pointer-events-none tracking-tighter leading-none"
+      >
+        2026
+      </motion.div>
 
-      {/* Animated Mesh Gradient Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 relative z-10">
+        {/* Top Dateline / Spec Header */}
         <motion.div
-          animate={{ scale: [1, 1.2, 1], x: [0, 100, 0], y: [0, 50, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-[10%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-violet-900/40 mix-blend-screen filter blur-[120px] opacity-70"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.3, 1], x: [0, -150, 0], y: [0, 100, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[20%] -right-[10%] w-[50vw] h-[50vw] rounded-full bg-blue-900/30 mix-blend-screen filter blur-[100px] opacity-70"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], y: [0, -100, 0], x: [0, 50, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-[20%] left-[20%] w-[70vw] h-[70vw] rounded-full bg-indigo-900/30 mix-blend-screen filter blur-[140px] opacity-70"
-        />
-      </div>
-
-      {/* Main content  vertically centered */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-4 py-8">
-
-        {/* Open to Work badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-4 flex items-center gap-3"
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-12 border-b border-[#e6e0d4] text-xs font-mono text-[#78716c]"
         >
-          <div className="flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1.5">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+          <div className="flex items-center gap-2.5">
+            <span className="inline-block w-2 h-2 rounded-sm bg-[#c2410c] animate-pulse" />
+            <span className="uppercase tracking-widest text-[#44403c] font-semibold">
+              Specification Sheet · Folio No. 01
             </span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-400">Open to Work</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Briefcase className="h-3 w-3 text-white/30" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30">
-              Full Stack · AI Engineer · Available Worldwide
+
+          <div className="flex items-center gap-6 text-[11px] tracking-wider uppercase">
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+              Role: Full Stack &amp; AI Systems
             </span>
+            <span className="hidden sm:inline text-[#d4ccbe]">|</span>
+            <span className="hidden sm:inline">Status: Open for Contract &amp; Full-Time</span>
           </div>
         </motion.div>
 
-        {/* Big Name */}
-        <motion.div
-          initial={{ y: 80, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        >
-          <h1 className="text-[20vw] sm:text-[14vw] md:text-[10vw] leading-[0.85] font-bold tracking-tighter uppercase font-sans text-white mix-blend-difference">
-            Samra
-            <br />
-            Safdar<span className="text-primary/80">.</span>
-          </h1>
-        </motion.div>
-
-        {/* Tagline + links + stats */}
-        <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex flex-col items-center gap-8 md:gap-24"
-        >
-          {/* Left */}
-          <div className="max-w-md w-full text-center">
-            <p className="text-lg sm:text-2xl font-light tracking-wide text-white/90 leading-snug">
-              Full Stack Developer &amp; Cloud{" "}
-              <br className="hidden sm:block" />AI Enthusiast
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-3 justify-center">
-              <motion.a
-                href="https://www.linkedin.com/in/samra-safdar-16833b30b"
-                target="_blank"
-                rel="noreferrer"
-                whileHover={{ y: -4, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-3 text-sm font-medium uppercase tracking-[0.25em] text-cyan-400 backdrop-blur-xl transition-all hover:border-cyan-400/60 hover:bg-cyan-500/20 shadow-lg shadow-cyan-500/20 overflow-hidden"
+        {/* Main Title & Editorial Presentation */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-16">
+          <div className="lg:col-span-8">
+            {/* Title with Masking Reveal */}
+            <div className="overflow-hidden pb-1">
+              <motion.h1
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#141413] leading-[1.05] uppercase"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-400/20 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Linkedin className="h-4 w-4 relative z-10" />
-                <span className="relative z-10">LinkedIn</span>
-                <ArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:translate-x-1 group-hover:-translate-y-1 relative z-10" />
-              </motion.a>
+                Samra Safdar
+                <motion.span
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6, duration: 0.4 }}
+                  className="text-[#c2410c] inline-block"
+                >
+                  .
+                </motion.span>
+              </motion.h1>
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-4 text-xl sm:text-2xl font-normal text-[#44403c] tracking-tight"
+            >
+              Full Stack Developer &amp; Applied AI Systems Engineer
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6 text-base sm:text-lg text-[#57534e] leading-relaxed max-w-2xl font-normal"
+            >
+              Architecting resilient distributed backends, autonomous multi-agent pipelines with LangGraph,
+              and tactile, high-performance web applications. Focused on engineering production-grade software
+              that solves intricate domain challenges.
+            </motion.p>
+
+            {/* Action Buttons with Spring Micro-Hover */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-8 flex flex-wrap items-center gap-3.5"
+            >
+              <motion.button
+                onClick={() => scrollTo("work")}
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 bg-[#141413] hover:bg-[#2e2a25] text-[#f7f5ef] px-6 py-3.5 rounded text-xs font-mono font-semibold uppercase tracking-wider transition-colors shadow-sm group"
+              >
+                <span>Examine Systems</span>
+                <ArrowDown className="w-3.5 h-3.5 text-[#c2410c] group-hover:translate-y-1 transition-transform" />
+              </motion.button>
 
               <motion.a
                 href="https://github.com/samki6576"
                 target="_blank"
                 rel="noreferrer"
-                whileHover={{ y: -4, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-5 py-3 text-sm font-medium uppercase tracking-[0.25em] text-violet-400 backdrop-blur-xl transition-all hover:border-violet-400/60 hover:bg-violet-500/20 shadow-lg shadow-violet-500/20 overflow-hidden"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 bg-[#ffffff] hover:bg-[#faf8f3] text-[#141413] border border-[#e6e0d4] hover:border-[#141413] px-5 py-3.5 rounded text-xs font-mono font-medium uppercase tracking-wider transition-colors shadow-sm group"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/0 via-violet-400/20 to-violet-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Github className="h-4 w-4 relative z-10" />
-                <span className="relative z-10">GitHub</span>
-                <ArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:translate-x-1 group-hover:-translate-y-1 relative z-10" />
+                <Github className="w-3.5 h-3.5 text-[#57534e] group-hover:text-[#141413]" />
+                <span>GitHub Repos</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#a8a29e] group-hover:text-[#141413] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </motion.a>
 
               <motion.a
-                href="mailto:samrasdra@gmail.com"
-                whileHover={{ y: -4, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative flex items-center gap-2 rounded-full border-2 border-emerald-400 bg-gradient-to-r from-emerald-500/20 to-emerald-400/20 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-emerald-300 backdrop-blur-xl transition-all hover:border-emerald-300 hover:from-emerald-500/40 hover:to-emerald-400/40 shadow-lg shadow-emerald-500/40 overflow-hidden"
+                href="https://www.linkedin.com/in/samra-safdar-16833b30b"
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 bg-[#ffffff] hover:bg-[#faf8f3] text-[#141413] border border-[#e6e0d4] hover:border-[#141413] px-5 py-3.5 rounded text-xs font-mono font-medium uppercase tracking-wider transition-colors shadow-sm group"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 via-emerald-300/30 to-emerald-400/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Mail className="h-4 w-4 relative z-10" />
-                <span className="relative z-10">Hire Me</span>
+                <Linkedin className="w-3.5 h-3.5 text-[#1e3a8a]" />
+                <span>LinkedIn</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#a8a29e] group-hover:text-[#141413] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </motion.a>
-            </div>
+            </motion.div>
           </div>
 
-          {/* Right: stats */}
-          <div className="flex flex-col gap-4 max-w-xs">
-            {stats.map((stat, i) => (
+          {/* Right: Technical Stamp Card with Physical Stamp Animation */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-4"
+          >
+            <div className="bg-[#ffffff] border border-[#e6e0d4] rounded p-6 shadow-[0_4px_20px_-4px_rgba(28,25,23,0.06)] relative group hover:shadow-[0_8px_30px_-4px_rgba(28,25,23,0.1)] transition-shadow duration-300">
+              {/* Animated physical ink stamp */}
               <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 + i * 0.1 }}
-                className="flex flex-col"
+                initial={{ scale: 1.6, opacity: 0, rotate: -8 }}
+                animate={{ scale: 1, opacity: 1, rotate: 2 }}
+                transition={{ duration: 0.5, delay: 0.6, type: "spring", stiffness: 350, damping: 20 }}
+                className="absolute -top-3.5 right-4 bg-[#f7f5ef] border-2 border-[#c2410c] text-[#c2410c] px-3 py-0.5 rounded text-[10px] font-mono uppercase tracking-widest font-bold shadow-sm select-none"
               >
-                <span className="text-2xl font-bold text-white tracking-tight">{stat.value}</span>
-                <span className="text-[10px] text-white/40 uppercase tracking-[0.2em]">{stat.label}</span>
+                VERIFIED ARCHIVE
               </motion.div>
-            ))}
+
+              <div className="flex items-center gap-2.5 pb-4 mb-4 border-b border-[#e6e0d4]">
+                <Terminal className="w-4 h-4 text-[#141413]" />
+                <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#141413]">
+                  Technical Dossier Summary
+                </h3>
+              </div>
+
+              <div className="space-y-4">
+                {stats.map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
+                    className="flex flex-col"
+                  >
+                    <span className="font-mono text-base font-bold text-[#141413] tracking-tight">
+                      {stat.isText ? (
+                        stat.text
+                      ) : (
+                        <Counter target={stat.target || 0} suffix={stat.suffix} />
+                      )}
+                    </span>
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-[#78716c]">
+                      {stat.label}
+                    </span>
+                    <span className="text-xs text-[#57534e] mt-0.5">
+                      {stat.desc}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Stack Stamp Bar with Micro-Hovers */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="pt-6 border-t border-[#e6e0d4]"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-[#78716c] shrink-0 font-medium">
+              Core Architecture Stack:
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {stackPills.map((pill, idx) => (
+                <motion.span
+                  key={pill}
+                  whileHover={{ y: -2, scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  className="bg-[#ffffff] border border-[#e6e0d4] hover:border-[#141413] text-[#44403c] hover:text-[#141413] text-[11px] font-mono px-2.5 py-1 rounded transition-colors cursor-default shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
+                >
+                  {pill}
+                </motion.span>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 right-8 md:bottom-12 md:right-24 z-20 mix-blend-difference hidden sm:flex items-center gap-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-      >
-        <span className="text-xs uppercase tracking-[0.3em] text-white/60 rotate-90 origin-right translate-y-8">Scroll</span>
-        <div className="w-[1px] h-24 bg-white/20 relative overflow-hidden">
-          <motion.div
-            className="w-full h-1/3 bg-white absolute top-0"
-            animate={{ top: ["-33%", "100%"] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-          />
-        </div>
-      </motion.div>
-    </div>
+      {/* Luxury Slow Infinite Broadsheet Ticker */}
+      <div className="mt-14 py-3 border-y border-[#e6e0d4] bg-[#faf8f3] overflow-hidden whitespace-nowrap">
+        <motion.div
+          animate={{ x: [0, -1000] }}
+          transition={{ repeat: Infinity, duration: 28, ease: "linear" }}
+          className="inline-flex gap-8 items-center text-[11px] font-mono tracking-[0.25em] uppercase text-[#78716c]"
+        >
+          {[...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
+            <span key={idx} className="flex items-center gap-8">
+              <span>{item}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c2410c]/60" />
+            </span>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   )
 }
