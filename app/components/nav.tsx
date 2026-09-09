@@ -2,22 +2,17 @@
 
 import { useState } from "react"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
-import { FileText } from "lucide-react"
+import { ArrowUpRight, FileCode, Mail } from "lucide-react"
 
 export default function Nav() {
   const { scrollY } = useScroll()
   const [hidden, setHidden] = useState(false)
-  const [isTop, setIsTop] = useState(true)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious()
-    if (latest > 50) {
-      setIsTop(false)
-    } else {
-      setIsTop(true)
-    }
-
-    if (previous !== undefined && latest > previous && latest > 150) {
+    setIsScrolled(latest > 40)
+    if (previous !== undefined && latest > previous && latest > 180) {
       setHidden(true)
     } else {
       setHidden(false)
@@ -36,73 +31,72 @@ export default function Nav() {
   }
 
   return (
-    <motion.nav
+    <motion.header
       variants={{
         visible: { y: 0, opacity: 1 },
         hidden: { y: "-100%", opacity: 0 },
       }}
       animate={hidden ? "hidden" : "visible"}
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed left-1/2 -translate-x-1/2 z-[90] transition-all duration-700 ease-[0.16,1,0.3,1] ${
-        isTop ? "w-full px-6 md:px-12 top-0 py-8" : "w-max top-6"
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-[80] transition-all duration-300 ${
+        isScrolled
+          ? "bg-[#f7f5ef]/95 backdrop-blur-md border-b border-[#e6e0d4] py-3.5 shadow-[0_2px_12px_-2px_rgba(28,25,23,0.05)]"
+          : "bg-transparent py-5 border-b border-[#e6e0d4]/60"
       }`}
     >
-      <div
-        className={`flex items-center justify-between mx-auto transition-all duration-700 ease-[0.16,1,0.3,1] ${
-          isTop
-            ? "max-w-7xl"
-            : "bg-[#111111]/70 backdrop-blur-2xl border border-white/20 rounded-full px-10 py-5 shadow-2xl shadow-black/50 gap-10"
-        }`}
-      >
-        <div className={`transition-all duration-700 ${!isTop ? "hidden" : "mix-blend-difference"}`}>
-          <img src="/logo.png" alt="Samra Portfolio" className="h-8 w-auto" />
-        </div>
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between">
+        {/* Brand / Colophon */}
+        <button
+          onClick={() => scrollToSection("home")}
+          className="group flex items-center gap-3 text-left focus:outline-none"
+        >
+          <div className="w-8 h-8 rounded-sm bg-[#141413] text-[#f7f5ef] font-mono text-xs font-bold flex items-center justify-center shadow-sm group-hover:bg-[#c2410c] transition-colors">
+            SS
+          </div>
+          <div>
+            <span className="text-sm font-semibold tracking-tight text-[#141413] block group-hover:text-[#c2410c] transition-colors">
+              Samra Safdar
+            </span>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#78716c] block">
+              Folio 2026 · Systems &amp; AI
+            </span>
+          </div>
+        </button>
 
-        <div className={`flex items-center gap-8 transition-all duration-700 ${isTop ? "mix-blend-difference" : ""}`}>
-          <motion.button
-            onClick={() => scrollToSection("home")}
-            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
-            whileHover={{ y: -2 }}
-          >
-            <span className="relative z-10">Home</span>
-            <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
-          </motion.button>
-          <motion.button
-            onClick={() => scrollToSection("about")}
-            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
-            whileHover={{ y: -2 }}
-          >
-            <span className="relative z-10">About</span>
-            <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
-          </motion.button>
-          <motion.button
-            onClick={() => scrollToSection("work")}
-            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
-            whileHover={{ y: -2 }}
-          >
-            <span className="relative z-10">Work</span>
-            <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
-          </motion.button>
-          <motion.button
-            onClick={() => scrollToSection("contact")}
-            className="group text-white text-xs font-bold uppercase tracking-[0.2em] hover:text-primary transition-all relative px-3 py-2 rounded-lg hover:bg-primary/10 outline-none"
-            whileHover={{ y: -2 }}
-          >
-            <span className="relative z-10">Contact</span>
-            <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform rounded-full" />
-          </motion.button>
-          <motion.a
+        {/* Center navigation links */}
+        <nav className="hidden md:flex items-center gap-1 font-mono text-xs tracking-wider uppercase">
+          {[
+            { label: "Systems", id: "work" },
+            { label: "Archive", id: "selected-works" },
+            { label: "Expertise", id: "about" },
+            { label: "Inquiry", id: "contact" },
+          ].map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className="px-3.5 py-1.5 rounded text-[#44403c] hover:text-[#141413] hover:bg-[#ede6d9]/70 transition-all"
+            >
+              {item.label}
+            </button>
+          ))}
+        </nav>
+
+        {/* Right CTA / Status */}
+        <div className="flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2 border border-[#e6e0d4] bg-[#ffffff] px-2.5 py-1 rounded-full text-[11px] font-mono text-[#57534e]">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+            <span>Available for Hire</span>
+          </div>
+
+          <a
             href="mailto:samrasdra@gmail.com"
-            whileHover={{ scale: 1.08, y: -3 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500/40 to-emerald-400/40 border border-emerald-400/60 px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300 hover:from-emerald-500/60 hover:to-emerald-400/60 hover:border-emerald-300 transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 overflow-hidden"
+            className="inline-flex items-center gap-1.5 bg-[#141413] hover:bg-[#2d2925] text-[#f7f5ef] px-4 py-2 rounded font-mono text-xs font-medium uppercase tracking-wider transition-all shadow-sm active:scale-95"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 via-emerald-300/20 to-emerald-400/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <FileText className="h-3.5 w-3.5 relative z-10" />
-            <span className="relative z-10">Hire Me</span>
-          </motion.a>
+            <Mail className="w-3.5 h-3.5 text-[#c2410c]" />
+            <span>Get in Touch</span>
+          </a>
         </div>
       </div>
-    </motion.nav>
+    </motion.header>
   )
 }

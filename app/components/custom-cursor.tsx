@@ -1,78 +1,52 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-  const [isViewProject, setIsViewProject] = useState(false)
+  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 })
+  const [isPointer, setIsPointer] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
       return
     }
-    setIsVisible(true)
 
-    const updateMousePosition = (e: MouseEvent) => {
+    const updateMouse = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
+      if (!isVisible) setIsVisible(true)
     }
 
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-      
-      const isProject = target.closest(".view-project")
-      if (isProject) {
-        setIsViewProject(true)
-        setIsHovering(true)
-        return
-      } else {
-        setIsViewProject(false)
-      }
-
-      if (
-        target.tagName.toLowerCase() === "a" ||
-        target.tagName.toLowerCase() === "button" ||
-        target.tagName.toLowerCase() === "input" ||
-        target.tagName.toLowerCase() === "textarea" ||
-        target.closest("a") ||
-        target.closest("button")
-      ) {
-        setIsHovering(true)
-      } else {
-        setIsHovering(false)
-      }
+    const updateTarget = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null
+      if (!target) return
+      const clickable = target.closest("a, button, input, textarea, [role='button']")
+      setIsPointer(!!clickable)
     }
 
-    window.addEventListener("mousemove", updateMousePosition)
-    window.addEventListener("mouseover", handleMouseOver)
+    window.addEventListener("mousemove", updateMouse, { passive: true })
+    window.addEventListener("mouseover", updateTarget, { passive: true })
 
     return () => {
-      window.removeEventListener("mousemove", updateMousePosition)
-      window.removeEventListener("mouseover", handleMouseOver)
+      window.removeEventListener("mousemove", updateMouse)
+      window.removeEventListener("mouseover", updateTarget)
     }
-  }, [])
+  }, [isVisible])
 
   if (!isVisible) return null
 
-  let size = 8
-  if (isHovering) size = 32
-  if (isViewProject) size = 48
-
   return (
-    <>
-      <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[100] hidden md:flex items-center justify-center rounded-full bg-violet-400/30 border border-violet-400/50 backdrop-blur-[1px] shadow-lg shadow-violet-500/20"
-        animate={{
-          x: mousePosition.x - size / 2,
-          y: mousePosition.y - size / 2,
-          width: size,
-          height: size,
-          opacity: 1,
-        }}
-        transition={{ type: "spring", stiffness: 500, damping: 32, mass: 0.2 }}
-      />
-    </>
+    <motion.div
+      className="pointer-events-none fixed top-0 left-0 z-[100] hidden md:block rounded-full border border-[#141413]/40 bg-[#141413]/5 backdrop-blur-[0.5px]"
+      animate={{
+        x: mousePosition.x - (isPointer ? 16 : 6),
+        y: mousePosition.y - (isPointer ? 16 : 6),
+        width: isPointer ? 32 : 12,
+        height: isPointer ? 32 : 12,
+        borderColor: isPointer ? "rgba(194, 65, 12, 0.6)" : "rgba(20, 20, 19, 0.3)",
+      }}
+      transition={{ type: "spring", stiffness: 600, damping: 35, mass: 0.1 }}
+    />
   )
 }

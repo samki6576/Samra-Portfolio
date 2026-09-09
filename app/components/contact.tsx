@@ -1,51 +1,22 @@
 "use client"
 
+import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { motion } from "framer-motion"
-import { Linkedin, Mail, MapPin, Clock, Briefcase } from "lucide-react"
-
+import { Mail, Linkedin, Github, Check, Copy, Send, MapPin, Clock, ShieldCheck } from "lucide-react"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name is required.",
-  }),
-  email: z.string().email({
-    message: "Valid email is required.",
-  }),
-  message: z.string().min(10, {
-    message: "Message is required.",
-  }),
+  name: z.string().min(2, { message: "Name is required." }),
+  email: z.string().email({ message: "Valid email is required." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 })
 
-const hiringInfo = [
-  {
-    icon: Briefcase,
-    label: "Role Type",
-    value: "Full-time · Contract · Freelance",
-    color: "text-violet-400",
-    bg: "bg-violet-500/10 border-violet-500/25",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Remote · Worldwide",
-    color: "text-blue-400",
-    bg: "bg-blue-500/10 border-blue-500/25",
-  },
-  {
-    icon: Clock,
-    label: "Availability",
-    value: "Immediately Available",
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10 border-emerald-500/25",
-  },
-]
-
-
 export default function Contact() {
+  const [copied, setCopied] = useState(false)
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -55,7 +26,14 @@ export default function Contact() {
     },
   })
 
+  const copyEmail = () => {
+    navigator.clipboard.writeText("samrasdra@gmail.com")
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   function onSubmit(values: z.infer<typeof formSchema>) {
+    setStatus("submitting")
     fetch("https://formspree.io/f/mjkwdwye", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -63,161 +41,218 @@ export default function Contact() {
     })
       .then((res) => {
         if (res.ok) {
-          alert("Message sent successfully!")
+          setStatus("success")
           form.reset()
         } else {
-          alert("Failed to send message.")
+          setStatus("error")
         }
       })
-      .catch((error) => {
-        console.error("Error sending message:", error)
+      .catch(() => {
+        setStatus("error")
       })
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-[#050505] pt-32 pb-48">
-      {/* Marquee Header */}
-      <div className="relative w-full overflow-hidden flex whitespace-nowrap border-y border-white/10 py-6 mb-24">
-        <motion.div
-          animate={{ x: [0, -2000] }}
-          transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-          className="flex whitespace-nowrap items-center text-[8vw] md:text-[6vw] font-bold uppercase tracking-tighter text-transparent"
-          style={{ WebkitTextStroke: "1px rgba(255,255,255,0.4)" }}
-        >
-          <span>AVAILABLE FOR HIRE • OPEN TO WORK • LET&apos;S BUILD TOGETHER • AVAILABLE FOR HIRE • OPEN TO WORK • LET&apos;S BUILD TOGETHER • </span>
-        </motion.div>
-      </div>
-
-      <div className="site-container px-6 md:px-24 relative z-10">
-
-        {/* Section Title */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-emerald-400">Currently Available</span>
+    <section id="contact" className="py-24 border-b border-[#e6e0d4] bg-[#fbf9f6]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 mb-12 border-b border-[#e6e0d4]">
+          <div>
+            <div className="flex items-center gap-2 mb-2 text-xs font-mono text-[#78716c] uppercase tracking-widest">
+              <span className="w-2 h-2 rounded-sm bg-[#c2410c]" />
+              <span>Section 04 · Direct Correspondence</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#141413] uppercase">
+              Initiate Inquiry
+            </h2>
           </div>
-          <h2 className="text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter leading-[0.9] mb-6">
-            Available <br /><span className="text-white/30">for Hire.</span>
-          </h2>
-          <p className="text-xl text-white/50 font-light max-w-xl leading-relaxed">
-            Open to full-time positions, contract roles, and freelance projects. Whether you need a feature shipped fast or an AI system built from scratch  let&apos;s talk.
+          <p className="text-sm text-[#57534e] max-w-md font-normal leading-relaxed">
+            Open for full-time engineering roles, technical contract consultations, and high-impact software systems.
           </p>
         </div>
 
-        {/* Hiring Info Cards */}
-        <div className="flex flex-wrap gap-4 mb-16">
-          {hiringInfo.map((item) => (
-            <div
-              key={item.label}
-              className={`flex items-center gap-3 rounded-2xl border ${item.bg} backdrop-blur-sm px-5 py-3`}
-            >
-              <item.icon className={`h-4 w-4 ${item.color}`} />
-              <div>
-                <p className="text-[10px] text-white/40 uppercase tracking-widest">{item.label}</p>
-                <p className={`text-sm font-semibold ${item.color}`}>{item.value}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Left Column: Direct Communication Channels & Parameters */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="bg-[#ffffff] border border-[#e6e0d4] rounded p-6 sm:p-7 shadow-sm">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#78716c] block mb-2 font-semibold">
+                Direct Electronic Mail
+              </span>
+              <div className="flex items-center justify-between gap-3">
+                <a
+                  href="mailto:samrasdra@gmail.com"
+                  className="font-mono text-sm sm:text-base font-bold text-[#141413] hover:text-[#c2410c] transition-colors break-all"
+                >
+                  samrasdra@gmail.com
+                </a>
+                <button
+                  onClick={copyEmail}
+                  className="p-2 border border-[#e6e0d4] hover:border-[#141413] rounded text-[#57534e] hover:text-[#141413] transition-all shrink-0 bg-[#f7f5ef]"
+                  title="Copy email to clipboard"
+                >
+                  {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                </button>
               </div>
             </div>
-          ))}
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-24 md:gap-16">
-          <div className="md:col-span-5">
-            <div className="flex flex-col gap-5">
-              <a
-                href="mailto:samrasdra@gmail.com"
-                className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/3 hover:bg-white/6 hover:border-primary/30 transition-all duration-500 p-5"
-              >
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/15 border border-primary/20">
-                  <Mail className="h-4 w-4 text-primary" />
-                </div>
-                <div>
-                  <p className="text-[10px] text-white/40 uppercase tracking-widest mb-0.5">Email</p>
-                  <p className="text-base font-medium text-white group-hover:text-primary transition-colors">samrasdra@gmail.com</p>
-                </div>
-              </a>
-
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <a
                 href="https://www.linkedin.com/in/samra-safdar-16833b30b"
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/3 hover:bg-white/6 hover:border-cyan-400/30 transition-all duration-500 p-5"
+                className="bg-[#ffffff] border border-[#e6e0d4] hover:border-[#141413] rounded p-5 shadow-sm transition-all group flex flex-col justify-between"
               >
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-cyan-500/15 border border-cyan-500/20">
-                  <Linkedin className="h-4 w-4 text-cyan-400" />
+                <div className="flex items-center justify-between text-[#78716c] mb-4">
+                  <span className="font-mono text-[10px] uppercase tracking-wider">Professional Profile</span>
+                  <Linkedin className="w-4 h-4 text-[#1e3a8a] group-hover:scale-110 transition-transform" />
                 </div>
                 <div>
-                  <p className="text-[10px] text-white/40 uppercase tracking-widest mb-0.5">LinkedIn</p>
-                  <p className="text-base font-medium text-white group-hover:text-cyan-400 transition-colors">Samra Safdar</p>
+                  <h4 className="font-mono text-sm font-bold text-[#141413] uppercase">LinkedIn</h4>
+                  <p className="text-xs text-[#57534e] mt-0.5">Samra Safdar</p>
+                </div>
+              </a>
+
+              <a
+                href="https://github.com/samki6576"
+                target="_blank"
+                rel="noreferrer"
+                className="bg-[#ffffff] border border-[#e6e0d4] hover:border-[#141413] rounded p-5 shadow-sm transition-all group flex flex-col justify-between"
+              >
+                <div className="flex items-center justify-between text-[#78716c] mb-4">
+                  <span className="font-mono text-[10px] uppercase tracking-wider">Code Repositories</span>
+                  <Github className="w-4 h-4 text-[#141413] group-hover:scale-110 transition-transform" />
+                </div>
+                <div>
+                  <h4 className="font-mono text-sm font-bold text-[#141413] uppercase">GitHub</h4>
+                  <p className="text-xs text-[#57534e] mt-0.5">@samki6576</p>
                 </div>
               </a>
             </div>
+
+            <div className="bg-[#ffffff] border border-[#e6e0d4] rounded p-6 shadow-sm space-y-3.5 text-xs text-[#57534e]">
+              <div className="flex items-center gap-2.5 font-mono text-xs font-semibold text-[#141413] pb-2 border-b border-[#e6e0d4]">
+                <ShieldCheck className="w-4 h-4 text-[#c2410c]" />
+                <span>Response &amp; Collaboration Guarantee</span>
+              </div>
+              <p className="leading-relaxed">
+                Direct inquiries receive a response within 24 business hours. Prepared to sign mutual NDAs for proprietary architectures or early-stage technical prototypes.
+              </p>
+            </div>
           </div>
 
-          <div className="md:col-span-7">
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <input
-                          placeholder="What's your name?"
-                          {...field}
-                          className="w-full bg-transparent border-0 border-b border-white/20 text-2xl md:text-3xl font-light text-white placeholder:text-white/20 focus:ring-0 focus:border-emerald-400 focus:outline-none transition-colors pb-3 rounded-none"
-                        />
-                      </FormControl>
-                      <FormMessage className="text-red-400 text-xs mt-2 font-mono uppercase tracking-widest" />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <input
-                          placeholder="Your email address?"
-                          {...field}
-                          className="w-full bg-transparent border-0 border-b border-white/20 text-2xl md:text-3xl font-light text-white placeholder:text-white/20 focus:ring-0 focus:border-emerald-400 focus:outline-none transition-colors pb-3 rounded-none"
-                        />
-                      </FormControl>
-                      <FormMessage className="text-red-400 text-xs mt-2 font-mono uppercase tracking-widest" />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <textarea
-                          placeholder="Tell me about the role or project."
-                          className="w-full bg-transparent border-0 border-b border-white/20 text-2xl md:text-3xl font-light text-white placeholder:text-white/20 focus:ring-0 focus:border-emerald-400 focus:outline-none transition-colors pb-3 rounded-none min-h-[120px] resize-none"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage className="text-red-400 text-xs mt-2 font-mono uppercase tracking-widest" />
-                    </FormItem>
-                  )}
-                />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group relative overflow-hidden rounded-full bg-gradient-to-r from-emerald-500/40 to-teal-500/40 border border-emerald-400/60 text-emerald-300 font-bold py-4.5 px-12 uppercase tracking-[0.15em] text-xs transition-all hover:from-emerald-500/60 hover:to-teal-500/60 shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/50"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 via-emerald-300/30 to-emerald-400/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <span className="relative z-10">Send Message</span>
-                </motion.button>
-              </form>
-            </Form>
+          {/* Right Column: Tactile Dispatch Form */}
+          <div className="lg:col-span-7">
+            <div className="bg-[#ffffff] border border-[#e6e0d4] rounded-lg p-6 sm:p-10 shadow-sm">
+              <div className="flex items-center justify-between pb-4 mb-8 border-b border-[#e6e0d4]">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#141413]">
+                  Transmission Console · Message Slip
+                </span>
+                <span className="font-mono text-[10px] uppercase text-[#78716c]">
+                  [STATUS: READY]
+                </span>
+              </div>
+
+              {status === "success" ? (
+                <div className="py-12 text-center">
+                  <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-4">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-mono text-base font-bold text-[#141413] uppercase">
+                    Transmission Dispatched
+                  </h4>
+                  <p className="text-xs text-[#57534e] mt-2 max-w-sm mx-auto">
+                    Your correspondence has been received. I will review your requirements and respond promptly.
+                  </p>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    className="mt-6 font-mono text-xs text-[#c2410c] hover:underline uppercase"
+                  >
+                    Send another dispatch
+                  </button>
+                </div>
+              ) : (
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <label className="font-mono text-[11px] uppercase tracking-wider text-[#44403c] block mb-1">
+                            Your Name / Organization
+                          </label>
+                          <FormControl>
+                            <input
+                              placeholder="e.g. Alex Chen (Horizon AI Labs)"
+                              {...field}
+                              className="w-full bg-[#f7f5ef] border border-[#e6e0d4] focus:border-[#141413] focus:bg-[#ffffff] focus:outline-none text-sm text-[#141413] placeholder:text-[#a8a29e] p-3 rounded font-mono transition-colors"
+                            />
+                          </FormControl>
+                          <FormMessage className="text-red-600 text-xs font-mono" />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <label className="font-mono text-[11px] uppercase tracking-wider text-[#44403c] block mb-1">
+                            Return Email Address
+                          </label>
+                          <FormControl>
+                            <input
+                              type="email"
+                              placeholder="e.g. alex@horizonlabs.ai"
+                              {...field}
+                              className="w-full bg-[#f7f5ef] border border-[#e6e0d4] focus:border-[#141413] focus:bg-[#ffffff] focus:outline-none text-sm text-[#141413] placeholder:text-[#a8a29e] p-3 rounded font-mono transition-colors"
+                            />
+                          </FormControl>
+                          <FormMessage className="text-red-600 text-xs font-mono" />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <label className="font-mono text-[11px] uppercase tracking-wider text-[#44403c] block mb-1">
+                            Project Scope / Inquiry Details
+                          </label>
+                          <FormControl>
+                            <textarea
+                              placeholder="Provide an overview of the system, role, or technical challenge you are seeking to address..."
+                              rows={5}
+                              {...field}
+                              className="w-full bg-[#f7f5ef] border border-[#e6e0d4] focus:border-[#141413] focus:bg-[#ffffff] focus:outline-none text-sm text-[#141413] placeholder:text-[#a8a29e] p-3 rounded font-mono transition-colors resize-none"
+                            />
+                          </FormControl>
+                          <FormMessage className="text-red-600 text-xs font-mono" />
+                        </FormItem>
+                      )}
+                    />
+
+                    <button
+                      type="submit"
+                      disabled={status === "submitting"}
+                      className="w-full inline-flex items-center justify-center gap-2 bg-[#141413] hover:bg-[#2d2925] disabled:opacity-50 text-[#f7f5ef] py-3.5 px-6 rounded font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-sm group"
+                    >
+                      <Send className="w-3.5 h-3.5 text-[#c2410c] group-hover:translate-x-0.5 transition-transform" />
+                      <span>{status === "submitting" ? "Transmitting..." : "Dispatch Message Slip"}</span>
+                    </button>
+
+                    {status === "error" && (
+                      <p className="text-center text-xs font-mono text-red-600 mt-2">
+                        Transmission failed. Please reach out directly to samrasdra@gmail.com.
+                      </p>
+                    )}
+                  </form>
+                </Form>
+              )}
+            </div>
           </div>
         </div>
       </div>
