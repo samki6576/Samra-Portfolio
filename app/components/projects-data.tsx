@@ -10,6 +10,7 @@ export type Project = {
   github?: string
   impact?: string
   status?: string
+  highlights?: string[]
 }
 
 // Apps & tools  shown in the "Web Apps" section
