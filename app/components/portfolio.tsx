@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ArrowUpRight, Github, TrendingUp, ChevronLeft, ChevronRight } from "lucide-react"
 import { appWorks } from "./projects-data"
 
-const categories = ["all", "AI / Full-Stack", "Apps", "Games"]
+const categories = ["all", "AI / Full-Stack", "Apps", "Games","Machine Learning"]
 
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState("all")
@@ -177,14 +177,16 @@ export default function Portfolio() {
                           <Github className="w-4 h-4" />
                         </a>
                       )}
-                      <a
-                        href={work.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1.5 rounded text-[#78716c] hover:text-[#c2410c] hover:bg-[#f7f5ef] transition-colors"
-                      >
-                        <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </a>
+                      {work.url !== work.github && (
+                        <a
+                          href={work.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-1.5 rounded text-[#78716c] hover:text-[#c2410c] hover:bg-[#f7f5ef] transition-colors"
+                        >
+                          <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </a>
+                      )}
                     </div>
                   </div>
 

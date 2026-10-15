@@ -3,7 +3,7 @@ export type Project = {
   title: string
   description: string
   tech: string[]
-  category: "Apps" | "Games" | "Websites" | "AI / Full-Stack"
+  category: "Apps" | "Games" | "Websites" | "AI / Full-Stack"|"Machine Learning"
   url: string
   image: string
   year: string
@@ -67,18 +67,7 @@ export const appWorks: Project[] = [
     year: "2026",
     image: "resume.png",
   },
-  {
-    id: "breakfast-blitz",
-    title: "Breakfast Blitz",
-    description:
-      "Fast-paced browser arcade game where players sort and serve orders against the clock  built to practice game-loop logic and timed interactions.",
-    tech: ["JavaScript", "Canvas API"],
-    category: "Games",
-    url: "https://breakfast-v8a1.vercel.app/",
-    github: "https://github.com/samki6576/BREAKFAST",
-    year: "2026",
-    image: "/lol.png",
-  },
+ 
   {
     id: "unified-city-dashboard",
     title: "Unified City Dashboard",
@@ -103,30 +92,7 @@ export const appWorks: Project[] = [
     image: "uni.png",
     status: "live",
   },
-  {
-    id: "wipe-out",
-    title: "Wipeout",
-    description:
-      "Tactical math game focused on place value practice, blending fast-paced educational gameplay with retro hacker styling.",
-    tech: ["Unity", "WebGL", "Android"],
-    category: "Games",
-    url: "https://wipe-out.vercel.app/",
-    github: "https://github.com/samki6576/wipe-out",
-    year: "2026",
-    image: "/wipe.png",
-  },
-  {
-    id: "habit-tracker",
-    title: "Habit Tracker",
-    description:
-      "Daily habit tracker for logging streaks, viewing progress over time, and staying consistent with personal goals.",
-    tech: ["Next.js", "TypeScript"],
-    category: "Apps",
-    url: "https://habit-tracker-git-main-samras-projects-c05660e5.vercel.app",
-    github: "https://github.com/samki6576/habit-tracker",
-    year: "2026",
-    image: "poo.png",
-  },
+ 
   {
     id: "vitalsign-ai",
     title: "VitalSign AI",
@@ -151,6 +117,73 @@ export const appWorks: Project[] = [
     year: "2026",
     image: "agent.png",
   },
+   {
+    id: "dataguardian",
+    title: "DataGuardian",
+    description:
+      "Metadata-aware data reliability assistant for DataHub. Inspect catalog metadata, run risk rules, trace lineage, generate remediation artifacts, and surface approvals from a Next.js dashboard and FastAPI backend.",
+    tech: ["Python"],
+    category: "AI / Full-Stack",
+    url: "https://github.com/samki6576/dataguardian",
+    github: "https://github.com/samki6576/dataguardian",
+    year: "2026",
+    image: "/datag.png",
+  },
+ 
+  {
+    id: "remote-sensing-imagery",
+    title: "Remote Sensing Imagery",
+    description:
+      "Semi-supervised segmentation pipeline using partial cross-entropy loss to compute loss on labeled pixels while ignoring unlabeled pixels.",
+    tech: ["Python"],
+    category: "AI / Full-Stack",
+    url: "https://github.com/samki6576/Remote-Sensing-Imagery",
+    github: "https://github.com/samki6576/Remote-Sensing-Imagery",
+    year: "2026",
+    image: "/remote-sensing-imagery.png",
+  },
+
+  {
+    id: "script-to-screen-guardian",
+    title: "Script-to-Screen Guardian",
+    description: "Browse the repository for its README, source code, and setup details.",
+    tech: ["Python"],
+    category: "Apps",
+    url: "https://script-to-screen-guardian-c2sq9azew9anwwhd3vs5fm.streamlit.app/",
+    github: "https://github.com/samki6576/script-to-screen-guardian",
+    year: "2026",
+    image: "/script-screen.png",
+  },
+ {
+    id: "agentmemory",
+    title: "AgentMemory",
+    description:
+      "A hybrid local and distributed memory system for AI agents, providing fast conversation recall and durable memory that can be shared globally.",
+    tech: ["JavaScript"],
+    category: "AI / Full-Stack",
+    url: "https://github.com/samki6576/AgentMemory",
+    github: "https://github.com/samki6576/AgentMemory",
+    year: "2026",
+    image: "/repository-placeholder.svg",
+  },
+  
+{
+    id: "flyrank",
+    title: "FlyRank ML Internship – Content Performance Prediction",
+    description: "End-to-end machine learning pipeline predicting content performance from 500K+ search records. Built a Random Forest model achieving 29% improvement over baseline (RMSE 850 vs 1,200). Includes feature engineering, leakage prevention, cross-validation, and a deployed research paper with an embedded AI agent.",
+    tech: ["Python", "scikit-learn", "DuckDB", "Pandas", "Hugging Face", "Jupyter", "HTML/CSS"],
+    category: "Machine Learning",
+    url: "https://samki6576.github.io/flyrank/",
+    github: "https://github.com/samki6576/flyrank",
+    year: "2026",
+    image: "/flyrank-cover.png",
+    highlights: [
+        "29% improvement over baseline (RMSE 850 vs 1,200)",
+        "Random Forest with cross-validation & leakage checks",
+        "Live research paper + portfolio + AI agent",
+        "17 assignments + 2 accepted capstones"
+    ]
+},
   {
     id: "remitx",
     title: "RemitX",
@@ -162,6 +195,116 @@ export const appWorks: Project[] = [
     github: "https://github.com/samki6576/RemitX",
     year: "2026",
     image: "remitx.png",
+  },
+   {
+    id: "wipe-out",
+    title: "Wipeout",
+    description:
+      "Tactical math game focused on place value practice, blending fast-paced educational gameplay with retro hacker styling.",
+    tech: ["Unity", "WebGL", "Android"],
+    category: "Games",
+    url: "https://wipe-out.vercel.app/",
+    github: "https://github.com/samki6576/wipe-out",
+    year: "2026",
+    image: "/wipe.png",
+  },
+  
+ 
+  {
+    id: "out-loud",
+    title: "Out-loud",
+    description: "A quiet place to say the thing you can't say anywhere else.",
+    tech: ["Dart"],
+    category: "Apps",
+    url: "https://github.com/samki6576/Out-loud",
+    github: "https://github.com/samki6576/Out-loud",
+    year: "2026",
+    image: "/loud.jfif",
+  },
+
+  {
+    id: "panda",
+    title: "Panda",
+    description: "Browse the repository for its README, source code, and setup details.",
+    tech: ["TypeScript"],
+    category: "Apps",
+    url: "https://github.com/samki6576/panda",
+    github: "https://github.com/samki6576/panda",
+    year: "2026",
+    image: "/Panda.png",
+  },
+  {
+    id: "dataguardian",
+    title: "DataGuardian",
+    description:
+      "Metadata-aware data reliability assistant for DataHub. Inspect catalog metadata, run risk rules, trace lineage, generate remediation artifacts, and surface approvals from a Next.js dashboard and FastAPI backend.",
+    tech: ["Python"],
+    category: "AI / Full-Stack",
+    url: "https://github.com/samki6576/dataguardian",
+    github: "https://github.com/samki6576/dataguardian",
+    year: "2026",
+    image: "/datag.png",
+  },
+  {
+    id: "remindri",
+    title: "Remindri Hydration Wellness Agent",
+    description:
+      "AI-powered wellness agent that helps students and remote workers stay hydrated and take micro-breaks.",
+    tech: ["JavaScript"],
+    category: "AI / Full-Stack",
+    url: "https://github.com/samki6576/Remindri-Hydration-Wellness-Agent",
+    github: "https://github.com/samki6576/Remindri-Hydration-Wellness-Agent",
+    year: "2026",
+    image: "/repository-placeholder.svg",
+  },
+  {
+    id: "remote-sensing-imagery",
+    title: "Remote Sensing Imagery",
+    description:
+      "Semi-supervised segmentation pipeline using partial cross-entropy loss to compute loss on labeled pixels while ignoring unlabeled pixels.",
+    tech: ["Python"],
+    category: "AI / Full-Stack",
+    url: "https://github.com/samki6576/Remote-Sensing-Imagery",
+    github: "https://github.com/samki6576/Remote-Sensing-Imagery",
+    year: "2026",
+    image: "/remote-sensing-imagery.png",
+  },
+
+  {
+    id: "script-to-screen-guardian",
+    title: "Script-to-Screen Guardian",
+    description: "Browse the repository for its README, source code, and setup details.",
+    tech: ["Python"],
+    category: "Apps",
+    url: "https://script-to-screen-guardian-c2sq9azew9anwwhd3vs5fm.streamlit.app/",
+    github: "https://github.com/samki6576/script-to-screen-guardian",
+    year: "2026",
+    image: "/script-screen.png",
+  },
+ {
+    id: "agentmemory",
+    title: "AgentMemory",
+    description:
+      "A hybrid local and distributed memory system for AI agents, providing fast conversation recall and durable memory that can be shared globally.",
+    tech: ["JavaScript"],
+    category: "AI / Full-Stack",
+    url: "https://github.com/samki6576/AgentMemory",
+    github: "https://github.com/samki6576/AgentMemory",
+    year: "2026",
+    image: "/repository-placeholder.svg",
+  },
+
+  {
+    id: "habit-tracker",
+    title: "Habit Tracker",
+    description:
+      "Daily habit tracker for logging streaks, viewing progress over time, and staying consistent with personal goals.",
+    tech: ["Next.js", "TypeScript"],
+    category: "Apps",
+    url: "https://habit-tracker-git-main-samras-projects-c05660e5.vercel.app",
+    github: "https://github.com/samki6576/habit-tracker",
+    year: "2026",
+    image: "poo.png",
   },
   {
     id: "samra-store",
@@ -200,6 +343,18 @@ export const appWorks: Project[] = [
     github: "https://github.com/samki6576/-carbonledger-ai",
     year: "2026",
     image: "jk.jpg",
+  },
+   {
+    id: "breakfast-blitz",
+    title: "Breakfast Blitz",
+    description:
+      "Fast-paced browser arcade game where players sort and serve orders against the clock  built to practice game-loop logic and timed interactions.",
+    tech: ["JavaScript", "Canvas API"],
+    category: "Games",
+    url: "https://breakfast-v8a1.vercel.app/",
+    github: "https://github.com/samki6576/BREAKFAST",
+    year: "2026",
+    image: "/lol.png",
   },
   {
     id: "zizy-pdf",
@@ -250,6 +405,33 @@ export const appWorks: Project[] = [
     year: "2026",
     image: "food.png",
   },
+ 
+  
+  {
+    id: "character-series-generator",
+    title: "Character Series Generator",
+    description:"The tool automates the entire short-drama creation pipeline: from scriptwriting to video production. Simply input a story idea, and the AI generates a script, creates character designs, produces voiceovers, and compiles a final video",
+    tech: ["Python"],
+    category: "Apps",
+    url: "https://github.com/samki6576/character-series-generator",
+    github: "https://github.com/samki6576/character-series-generator",
+    year: "2026",
+    image: "/repository-placeholder.svg",
+  },
+  {
+    id: "cool-hai",
+    title: "Cool Hai",
+    description: "Samra Cool Hai is an image-to-PDF converter with OCR text extraction. ",
+    tech: ["JavaScript"],
+    category: "Apps",
+    url: "https://cool-hai.vercel.app/",
+    github: "https://github.com/samki6576/cool-hai-",
+    year: "2025",
+    image: "/repository-placeholder.svg",
+  },
+
+
+
 ]
 
 // Websites  shown in the "Selected Works" section
@@ -298,7 +480,7 @@ export const selectedWorks: Project[] = [
     tech: ["Next.js", "Three.js", "Framer Motion"],
     category: "Websites",
     url: "https://ocean-explorer-git-main-samras-projects-c05660e5.vercel.app",
-    github: "https://github.com/samki6576/ocean-explorer",
+    github: "https://github.com/samki6576/OceanExplorer",
     year: "2026",
     image: "/8.png",
   },
