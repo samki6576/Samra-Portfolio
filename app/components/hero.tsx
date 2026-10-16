@@ -142,9 +142,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="mt-6 text-base sm:text-lg text-[#57534e] leading-relaxed max-w-2xl font-normal"
             >
-              Architecting resilient distributed backends, autonomous multi-agent pipelines with LangGraph,
-              and tactile, high-performance web applications. Focused on engineering production-grade software
-              that solves intricate domain challenges.
+            I am architecting distributed backends building autonomous multi-agent pipelines with LangGraph and creating tactile high-performance web applications. I am focused on engineering production-grade software that solves domain challenges.
             </motion.p>
 
             {/* Action Buttons with Spring Micro-Hover */}
