@@ -258,18 +258,6 @@ export const appWorks: Project[] = [
     year: "2026",
     image: "/repository-placeholder.svg",
   },
-  {
-    id: "remote-sensing-imagery",
-    title: "Remote Sensing Imagery",
-    description:
-      "Semi-supervised segmentation pipeline using partial cross-entropy loss to compute loss on labeled pixels while ignoring unlabeled pixels.",
-    tech: ["Python"],
-    category: "AI / Full-Stack",
-    url: "https://github.com/samki6576/Remote-Sensing-Imagery",
-    github: "https://github.com/samki6576/Remote-Sensing-Imagery",
-    year: "2026",
-    image: "/remote-sensing-imagery.png",
-  },
 
   {
     id: "script-to-screen-guardian",
